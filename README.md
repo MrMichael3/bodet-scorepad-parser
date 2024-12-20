@@ -68,11 +68,15 @@ The JSON file location can be customized by changing the filename parameter in t
 1. The script listens for TCP connections and receives data in chunks.
 2. Messages are parsed according to predefined markers and structure.
 3. Only messages with type `11` are processed further.
-  - message #11 means floorball. For other message types see the [Guide from Bodet](https://static.bodet-sport.com/images/stories/EN/support/Pdfs/manuals/Scorepad/608264-Network%20output%20and%20protocols-Scorepad.pdf)
+   
+   - message #11 means floorball. For other message types see the [Guide from Bodet](https://static.bodet-sport.com/images/stories/EN/support/Pdfs/manuals/Scorepad/608264-Network%20output%20and%20protocols-Scorepad.pdf)
+  
 5. Extracted information includes:
-  - Scores (home and guest teams).
-  - Time (in minutes and seconds).
-  - Period (handles regular periods as integers and "E" for overtime).
+   
+   - Scores (home and guest teams).
+   - Time (in minutes and seconds).
+   - Period (handles regular periods as integers and "E" for overtime).
+    
 5. The results are printed to the console and saved to a JSON file.
 
 ## Example Input
