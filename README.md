@@ -1,8 +1,11 @@
-# TCP Message Processor
+# TCP Message Processor for Bodet Scorepad
 
-This repository contains a Python script to process and analyze data transmitted over TCP. The script is designed to parse specific messages and extract details such as scores, time, and game period. It also writes the current status into a JSON file for easy integration with other systems.
+This repository contains a Python script and additional files to process and analyze data transmitted over TCP from the [Bodet Scorepad](https://www.bodet-sport.com/products/sports-display-control/control-keyboard.html). 
+The script is designed to parse specific messages and extract details such as scores, time, and game period. It also writes the current status into a JSON file for easy integration with other systems.
 
 ## Features
+
+Currently the script *only listens for data related to floorball*. It serves as a template for other sports.   
 
 - Captures real-time data from a TCP socket.
 - Processes messages to extract:
@@ -33,10 +36,12 @@ This repository contains a Python script to process and analyze data transmitted
 python bodet-network.py
 ```
 3. The script will listen for incoming TCP connections on the specified port (default is 4001).
-4. Send data to the script over TCP using tools like socat or custom TCP clients. For example:
-```bash
-socat -u -d -d tcp4:127.0.0.1:4001 <data_source>
-```
+4. make sure to configure your Bodet Scorepad accordingly. The [Guide from Bodet](https://static.bodet-sport.com/images/stories/EN/support/Pdfs/manuals/Scorepad/608264-Network%20output%20and%20protocols-Scorepad.pdf) explains how to achive that.
+
+### Testing
+If you happen not to have a Scorepad with you all the time you can make use of the test.sh script. 
+IT will send some data to localhost:4001
+
 ## Output
 - Console Output: Each parsed message will be displayed in the console, showing the home score, guest score, time, and period.
 - JSON File: The current status is saved to status.json in the following format:
