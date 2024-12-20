@@ -7,11 +7,9 @@ def process_data(data):
     collecting = False  # Flag to indicate whether to collect bytes
 
     for byte in data:
-        # print(f"Data : {byte}")
         if byte == 0x01:  # Start of a new message
             collecting = False  # Reset collecting (ignore until STX)
         elif byte == 0x02:  # Start of Text (STX)
-            print ("STX found")
             collecting = True  # Start collecting bytes for the message
             current_message = []  # Initialize a new message array
         elif byte == 0x03:  # End of Text (ETX)
@@ -19,7 +17,6 @@ def process_data(data):
                 messages.append(current_message)  # Save the collected message
                 collecting = False  # Stop collecting
         elif collecting:
-            # print ("in collecting")
             current_message.append(byte)  # Add byte to current message
 
     return messages
@@ -30,7 +27,7 @@ def process_messages_with_number_11(messages):
     for message in messages:
         if len(message) > 15 and message[1] == 0x31 and message[2] == 0x31:  # Check positions [1] and [2]
             def interpret_byte(byte):
-                return 0 if byte == 0x20 else int(chr(byte))
+                return 0 if byte == 0x20 else int(chr(byte)) if chr(byte).isdigit() else chr(byte)
 
             mins_tens = interpret_byte(message[5])
             mins_ones = interpret_byte(message[6])
@@ -50,12 +47,12 @@ def process_messages_with_number_11(messages):
             scoreguest_ones = interpret_byte(message[14])
             scoreguest = (scoreguest_hundreds * 100) + (scoreguest_tens * 10) + scoreguest_ones
 
-            period = interpret_byte(message[15])
+            period_byte = message[15]
+            period = interpret_byte(period_byte) if period_byte != 0x20 else 0
 
             filtered_messages.append((message, mins, secs, scorehome, scoreguest, period))  # Add the message with mins and secs
 
     return filtered_messages
-
 
 def write_status_to_json(scorehome, scoreguest, mins, secs, period, filename="matchfacts.json"):
     status = {
@@ -64,6 +61,8 @@ def write_status_to_json(scorehome, scoreguest, mins, secs, period, filename="ma
         "time": f"{mins:02}:{secs:02}",
         "period": period
     }
+    print(f"status {status}")
+
     with open(filename, "w") as json_file:
         json.dump(status, json_file, indent=4)
 
@@ -87,7 +86,7 @@ def start_tcp_server(host, port):
                     # Filter messages with number 11
                     messages_with_11 = process_messages_with_number_11(all_messages)
 
-                    # Print the filtered messages
+                    # Print the filtered messages and write to JSON
                     for i, (msg, mins, secs, scorehome, scoreguest, period) in enumerate(messages_with_11):
                         print(f"Message with number 11 ({i + 1}): Mins: {mins}, Secs: {secs}, Score Home: {scorehome}, Score Guest: {scoreguest}, Period: {period}")
                         write_status_to_json(scorehome, scoreguest, mins, secs, period)
