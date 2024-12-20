@@ -35,16 +35,16 @@ Currently the script *only listens for data related to floorball*. It serves as 
 ```bash
 python bodet-network.py
 ```
-3. The script will listen for incoming TCP connections on the specified port (default is 4001).
+3. The script will listen for incoming TCP connections on the specified port (default is `4001`).
 4. make sure to configure your Bodet Scorepad accordingly. The [Guide from Bodet](https://static.bodet-sport.com/images/stories/EN/support/Pdfs/manuals/Scorepad/608264-Network%20output%20and%20protocols-Scorepad.pdf) explains how to achive that.
 
 ### Testing
-If you happen not to have a Scorepad with you all the time you can make use of the test.sh script. 
+If you happen not to have a Scorepad with you all the time you can make use of the `test.sh` script. 
 IT will send some data to localhost:4001
 
 ## Output
 - Console Output: Each parsed message will be displayed in the console, showing the home score, guest score, time, and period.
-- JSON File: The current status is saved to status.json in the following format:
+- JSON File: The current status is saved to `status.json` in the following format:
 ```json
 {
     "score_home": 50,
@@ -56,19 +56,20 @@ IT will send some data to localhost:4001
 
 ## Configuration
 - Host and Port:
-Modify the host and port variables in the script to change where the server listens for incoming connections:
+Modify the `host` and `port` variables in the script to change where the server listens for incoming connections:
 ```python
 host = '0.0.0.0'  # Listen on all interfaces
 port = 4001       # Default port
 ```
 - JSON File Location:
-The JSON file location can be customized by changing the filename parameter in the write_status_to_json function.
+The JSON file location can be customized by changing the filename parameter in the `write_status_to_json` function.
 
 # How It Works
 1. The script listens for TCP connections and receives data in chunks.
 2. Messages are parsed according to predefined markers and structure.
-3. Only messages with type 11 are processed further.
-4. Extracted information includes:
+3. Only messages with type `11` are processed further.
+  - message #11 means floorball. For other message types see the [Guide from Bodet](https://static.bodet-sport.com/images/stories/EN/support/Pdfs/manuals/Scorepad/608264-Network%20output%20and%20protocols-Scorepad.pdf)
+5. Extracted information includes:
   - Scores (home and guest teams).
   - Time (in minutes and seconds).
   - Period (handles regular periods as integers and "E" for overtime).
