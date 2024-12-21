@@ -44,11 +44,15 @@ IT will send some data to localhost:4001
 
 ## Output
 - Console Output: Each parsed message will be displayed in the console, showing the home score, guest score, time, and period.
+Console:
+```yaml
+Message with number 11 (1): Mins: 2, Secs: 15, Score Home: 0, Score Guest: 20, Period: 1
+```` 
 - JSON File: The current status is saved to `status.json` in the following format:
 ```json
 {
-    "score_home": 50,
-    "score_guest": 48,
+    "score_home": 5,
+    "score_guest": 4,
     "time": "12:34",
     "period": 3
 }
@@ -96,21 +100,6 @@ A typical message might look like this in hex:
 - 0x31: Period (1)
 - 0x03: End of text (ETX)
 
-## Example Output
-
-Console:
-```yaml
-Message with number 11 (1): Mins: 2, Secs: 15, Score Home: 0, Score Guest: 20, Period: 1
-```` 
-JSON File:
-```json
-{
-    "score_home": 0,
-    "score_guest": 20,
-    "time": "02:15",
-    "period": 1
-}
-```
 ## what's next
 - implement longitudinal redundancy check (LRC) check to check integrity of received messages
 - implement additional message types
