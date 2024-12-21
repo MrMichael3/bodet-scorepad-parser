@@ -8,12 +8,12 @@ The script is designed to parse specific messages and extract details such as sc
 Currently the script *only listens for data related to floorball*. It serves as a template for other sports.   
 
 - Captures real-time data from a TCP socket.
-- Processes messages to extract:
+- Filters and processes only messages with a specific type identifier (number `11`).
+- Message `11` contains the following data: 
   - Home team score.
   - Guest team score.
   - Current game time (minutes and seconds).
   - Current game period (including overtime indicated as "E").
-- Filters and processes only messages with a specific type identifier (number `11`).
 - Outputs the parsed information to the console and a JSON file.
 
 ## Prerequisites
@@ -111,6 +111,12 @@ JSON File:
     "period": 1
 }
 ```
+## what's next
+- implement longitudinal redundancy check (LRC) check to check integrity of received messages
+- implement additional message types
+   -  Message #12: Home team players penalty
+   -  Message #13: Guest team players penalty
+
 ## License
 This project is licensed under the GNU GENERAL PUBLIC LICENSE Version 3. See the LICENSE file for details.
 
