@@ -1,3 +1,8 @@
+### ### ###
+# Version 0.2
+# including longitudinal redundancy check (LRC) calculation to maintain integrity 
+
+
 import socket
 import json
 
