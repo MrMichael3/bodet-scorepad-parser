@@ -1,28 +1,43 @@
-### ### ###
-# Version 0.2
-# including longitudinal redundancy check (LRC) calculation to maintain integrity 
-
-
 import socket
 import json
+
+def calculate_lrc(frame):
+    lrc = 0
+    # XOR all bytes between Address (after SOH) and ETX (inclusive)
+    for byte in frame[1:]:
+        lrc ^= byte
+        # print(f"byte: {hex(byte)} lrc: {hex(lrc)}") 
+
+    # print(f"LRC before AND: {hex(lrc)}")
+    lrc &= 0x7F
+    # print(f"LRC after  AND: {hex(lrc)}")
+    if lrc < 32:
+        lrc += 0x20
+    return lrc
+
+def validate_lrc(frame):
+    if len(frame) < 3:
+        return False
+    calculated_lrc = calculate_lrc(frame[:-1])
+    received_lrc = frame[-1]
+    # print(f"calculated_lrc: {hex(calculated_lrc)} received_lrc: {hex(received_lrc)}") 
+    return calculated_lrc == received_lrc
 
 def process_data(data):
     messages = []  # List to store extracted messages
     current_message = []  # Temporary list to store the current message bytes
     collecting = False  # Flag to indicate whether to collect bytes
 
-    for byte in data:
-        if byte == 0x01:  # Start of a new message
-            collecting = False  # Reset collecting (ignore until STX)
-        elif byte == 0x02:  # Start of Text (STX)
-            collecting = True  # Start collecting bytes for the message
-            current_message = []  # Initialize a new message array
-        elif byte == 0x03:  # End of Text (ETX)
-            if collecting:
-                messages.append(current_message)  # Save the collected message
-                collecting = False  # Stop collecting
+    for i, byte in enumerate(data):
+        if byte == 0x01 and not collecting:  # Start of a new message (SOH)
+            collecting = True
+            current_message = [byte]  # Include SOH in the message
         elif collecting:
-            current_message.append(byte)  # Add byte to current message
+            current_message.append(byte)
+            if byte == 0x03 and i + 1 < len(data):  # End of Text (ETX) followed by LRC
+                current_message.append(data[i + 1])  # Include LRC
+                messages.append(current_message)
+                collecting = False  # Stop collecting
 
     return messages
 
@@ -30,34 +45,40 @@ def process_messages_with_number_11(messages):
     filtered_messages = []  # List to store messages with the number 11
 
     for message in messages:
-        if len(message) > 15 and message[1] == 0x31 and message[2] == 0x31:  # Check positions [1] and [2]
-            def interpret_byte(byte):
-                return 0 if byte == 0x20 else int(chr(byte)) if chr(byte).isdigit() else chr(byte)
+        if not validate_lrc(message):
+            print("LRC validation failed for message:", [f"0x{byte:02X}" for byte in message])
+            continue    
 
-            mins_tens = interpret_byte(message[5])
-            mins_ones = interpret_byte(message[6])
-            mins = (mins_tens * 10) + mins_ones
+        if len(message) > 17:
+            if message[4] == 0x31 and message[5] == 0x31:  # Check positions [3] and [4]
+                def interpret_byte(byte):
+                    return 0 if byte == 0x20 else int(chr(byte)) if chr(byte).isdigit() else chr(byte)
 
-            secs_tens = interpret_byte(message[7])
-            secs_ones = interpret_byte(message[8])
-            secs = (secs_tens * 10) + secs_ones
+                mins_tens = interpret_byte(message[8])
+                mins_ones = interpret_byte(message[9])
+                mins = (mins_tens * 10) + mins_ones
 
-            scorehome_hundreds = interpret_byte(message[9])
-            scorehome_tens = interpret_byte(message[10])
-            scorehome_ones = interpret_byte(message[11])
-            scorehome = (scorehome_hundreds * 100) + (scorehome_tens * 10) + scorehome_ones
+                secs_tens = interpret_byte(message[10])
+                secs_ones = interpret_byte(message[11])
+                secs = (secs_tens * 10) + secs_ones
 
-            scoreguest_hundreds = interpret_byte(message[12])
-            scoreguest_tens = interpret_byte(message[13])
-            scoreguest_ones = interpret_byte(message[14])
-            scoreguest = (scoreguest_hundreds * 100) + (scoreguest_tens * 10) + scoreguest_ones
+                scorehome_hundreds = interpret_byte(message[12])
+                scorehome_tens = interpret_byte(message[13])
+                scorehome_ones = interpret_byte(message[14])
+                scorehome = (scorehome_hundreds * 100) + (scorehome_tens * 10) + scorehome_ones
 
-            period_byte = message[15]
-            period = interpret_byte(period_byte) if period_byte != 0x20 else 0
+                scoreguest_hundreds = interpret_byte(message[15])
+                scoreguest_tens = interpret_byte(message[16])
+                scoreguest_ones = interpret_byte(message[17])
+                scoreguest = (scoreguest_hundreds * 100) + (scoreguest_tens * 10) + scoreguest_ones
 
-            filtered_messages.append((message, mins, secs, scorehome, scoreguest, period))  # Add the message with mins and secs
+                period_byte = message[18]
+                period = interpret_byte(period_byte) if period_byte != 0x20 else 0
 
-    return filtered_messages
+                filtered_messages.append((message, mins, secs, scorehome, scoreguest, period))  # Add the message with mins and secs
+            
+
+        return filtered_messages
 
 def write_status_to_json(scorehome, scoreguest, mins, secs, period, filename="matchfacts.json"):
     status = {
@@ -66,8 +87,6 @@ def write_status_to_json(scorehome, scoreguest, mins, secs, period, filename="ma
         "time": f"{mins:02}:{secs:02}",
         "period": period
     }
-    print(f"status {status}")
-
     with open(filename, "w") as json_file:
         json.dump(status, json_file, indent=4)
 
@@ -93,7 +112,7 @@ def start_tcp_server(host, port):
 
                     # Print the filtered messages and write to JSON
                     for i, (msg, mins, secs, scorehome, scoreguest, period) in enumerate(messages_with_11):
-                        print(f"Message with number 11 ({i + 1}): Mins: {mins}, Secs: {secs}, Score Home: {scorehome}, Score Guest: {scoreguest}, Period: {period}")
+                        print(f"Message with number 11 ({i + 1}): Mins: {mins}, Secs: {secs}, Score Home: {scorehome}, Score Guest: {scoreguest}, Period: {period}, Raw Message: {[f'0x{byte:02X}' for byte in msg]}")
                         write_status_to_json(scorehome, scoreguest, mins, secs, period)
 
                     data = client_socket.recv(1024)  # Receive more data
