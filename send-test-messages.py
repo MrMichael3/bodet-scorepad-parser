@@ -10,7 +10,7 @@ LRC_LENGTH = 1  # Length of LRC byte
 # File containing binary data
 FILE_PATH = 'test-messages.bin'
 SERVER_ADDRESS = ('localhost', 4001)
-INTERVAL = 10  # hundredth of a second  
+INTERVAL = 100  # Interval between sending messages (in milliseconds)
 
 def extract_messages_from_file(file_path):
     """Extracts messages from the binary file."""
@@ -41,8 +41,12 @@ def extract_messages_from_file(file_path):
     return messages
 
 def should_send_message(message):
-    """Check if the fourth and fifth bytes are 0x31."""
-    return len(message) > 5 and message[4] == 0x31 and message[5] == 0x31
+#    """Check if the fourth and fifth bytes match valid message types."""
+#    return len(message) > 5 and message[4] == 0x31 and message[5] == 0x31
+    return (len(message) > 5 and 
+            ((message[4] == 0x31 and message[5] == 0x31) or
+             (message[4] == 0x31 and message[5] == 0x32) or
+             (message[4] == 0x31 and message[5] == 0x33)))
 
 def send_message_to_server(message, server_address):
     """Sends a single message to the server."""
@@ -62,9 +66,10 @@ def main():
         if should_send_message(message):
             print(f"Sending message {i+1}/{len(messages)}")
             send_message_to_server(message, SERVER_ADDRESS)
-            time.sleep(INTERVAL/100)
+            time.sleep(INTERVAL / 1000)  # Convert milliseconds to seconds
         else:
             print(f"Skipped message {i+1}/{len(messages)}: Does not meet criteria.")
+            print(f"Message: {message.hex()}")
 
 if __name__ == '__main__':
     main()

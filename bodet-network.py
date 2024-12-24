@@ -6,11 +6,7 @@ def calculate_lrc(frame):
     # XOR all bytes between Address (after SOH) and ETX (inclusive)
     for byte in frame[1:]:
         lrc ^= byte
-        # print(f"byte: {hex(byte)} lrc: {hex(lrc)}") 
-
-    # print(f"LRC before AND: {hex(lrc)}")
     lrc &= 0x7F
-    # print(f"LRC after  AND: {hex(lrc)}")
     if lrc < 32:
         lrc += 0x20
     return lrc
@@ -41,44 +37,50 @@ def process_data(data):
 
     return messages
 
-def process_messages_with_number_11(messages):
-    filtered_messages = []  # List to store messages with the number 11
+def process_message_by_type(message):
+    print(f"Full Message: {message}")
+    def interpret_byte(byte):
+        return 0 if byte == 0x20 else int(chr(byte)) if chr(byte).isdigit() else chr(byte)
 
-    for message in messages:
-        if not validate_lrc(message):
-            print("LRC validation failed for message:", [f"0x{byte:02X}" for byte in message])
-            continue    
+    if not validate_lrc(message):
+        print("LRC validation failed for message:", [f"0x{byte:02X}" for byte in message])
+        return None
 
-        if len(message) > 17:
-            if message[4] == 0x31 and message[5] == 0x31:  # Check positions [3] and [4]
-                def interpret_byte(byte):
-                    return 0 if byte == 0x20 else int(chr(byte)) if chr(byte).isdigit() else chr(byte)
+    msg_type = (message[4], message[5])
+    print(f"message Type: {msg_type}")
+    if msg_type == (0x31, 0x31):  # Message type 11
+        mins_tens = interpret_byte(message[8])
+        mins_ones = interpret_byte(message[9])
+        mins = (mins_tens * 10) + mins_ones
 
-                mins_tens = interpret_byte(message[8])
-                mins_ones = interpret_byte(message[9])
-                mins = (mins_tens * 10) + mins_ones
+        secs_tens = interpret_byte(message[10])
+        secs_ones = interpret_byte(message[11])
+        secs = (secs_tens * 10) + secs_ones
 
-                secs_tens = interpret_byte(message[10])
-                secs_ones = interpret_byte(message[11])
-                secs = (secs_tens * 10) + secs_ones
+        scorehome_hundreds = interpret_byte(message[12])
+        scorehome_tens = interpret_byte(message[13])
+        scorehome_ones = interpret_byte(message[14])
+        scorehome = (scorehome_hundreds * 100) + (scorehome_tens * 10) + scorehome_ones
 
-                scorehome_hundreds = interpret_byte(message[12])
-                scorehome_tens = interpret_byte(message[13])
-                scorehome_ones = interpret_byte(message[14])
-                scorehome = (scorehome_hundreds * 100) + (scorehome_tens * 10) + scorehome_ones
+        scoreguest_hundreds = interpret_byte(message[15])
+        scoreguest_tens = interpret_byte(message[16])
+        scoreguest_ones = interpret_byte(message[17])
+        scoreguest = (scoreguest_hundreds * 100) + (scoreguest_tens * 10) + scoreguest_ones
 
-                scoreguest_hundreds = interpret_byte(message[15])
-                scoreguest_tens = interpret_byte(message[16])
-                scoreguest_ones = interpret_byte(message[17])
-                scoreguest = (scoreguest_hundreds * 100) + (scoreguest_tens * 10) + scoreguest_ones
+        period_byte = message[18]
+        period = interpret_byte(period_byte) if period_byte != 0x20 else 0
 
-                period_byte = message[18]
-                period = interpret_byte(period_byte) if period_byte != 0x20 else 0
+        return (message, '11', mins, secs, scorehome, scoreguest, period)
 
-                filtered_messages.append((message, mins, secs, scorehome, scoreguest, period))  # Add the message with mins and secs
-            
+    elif msg_type == (0x31, 0x32):  # Message type 12
+        # print(f"message Type: {msg_type})")
+        return (message, '12', 'Type 12 Message Processed')
 
-        return filtered_messages
+    elif msg_type == (0x31, 0x33):  # Message type 13
+        # print(f"message Type: {msg_type})")
+        return (message, '13', 'Type 13 Message Processed')
+
+    return None
 
 def write_status_to_json(scorehome, scoreguest, mins, secs, period, filename="matchfacts.json"):
     status = {
@@ -100,20 +102,30 @@ def start_tcp_server(host, port):
     try:
         while True:
             client_socket, client_address = server_socket.accept()
-            print(f"Connection from {client_address}")
+            # print(f"Connection from {client_address}")
 
             with client_socket:
                 data = client_socket.recv(1024)  # Receive up to 1024 bytes of data
                 while data:
                     all_messages = process_data(data)
 
-                    # Filter messages with number 11
-                    messages_with_11 = process_messages_with_number_11(all_messages)
-
-                    # Print the filtered messages and write to JSON
-                    for i, (msg, mins, secs, scorehome, scoreguest, period) in enumerate(messages_with_11):
-                        print(f"Message with number 11 ({i + 1}): Mins: {mins}, Secs: {secs}, Score Home: {scorehome}, Score Guest: {scoreguest}, Period: {period}, Raw Message: {[f'0x{byte:02X}' for byte in msg]}")
-                        write_status_to_json(scorehome, scoreguest, mins, secs, period)
+                    for message in all_messages:
+                        result = process_message_by_type(message)
+                        if result:
+                            if result[1] == '11':
+                                # print(f"Message 11: Mins: {result[2]}, Secs: {result[3]}, Score Home: {result[4]}, Score Guest: {result[5]}, Period: {result[6]}, Raw: {[f'0x{byte:02X}' for byte in result[0]]}")
+                                write_status_to_json(result[4], result[5], result[2], result[3], result[6])
+                            elif result[1] == '12':
+                                # print(f"*** *** *** Message 12!!!!")
+                                print(f"Message {result[1]}: {result[2]}, Raw: {[f'0x{byte:02X}' for byte in result[0]]}")                            
+                            elif result[1] == '13':
+                                # print(f"*** *** *** Message 12!!!!")
+                                print(f"Message {result[1]}: {result[2]}, Raw: {[f'0x{byte:02X}' for byte in result[0]]}")
+                            
+                            else: 
+                                # print(f"*** *** *** Message 13!!!!")
+                                print(f"*** *** *** Another (unprocessed) message!!! ")
+                                print(f"Message {result[1]}: {result[2]}, Raw: {[f'0x{byte:02X}' for byte in result[0]]}")
 
                     data = client_socket.recv(1024)  # Receive more data
 
