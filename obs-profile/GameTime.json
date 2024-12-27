@@ -11,7 +11,7 @@
         "mixers": 255,
         "sync": 0,
         "flags": 0,
-        "volume": 0.18145664036273956,
+        "volume": 0.1808554083108902,
         "balance": 0.5,
         "enabled": true,
         "muted": true,
@@ -61,8 +61,8 @@
         "monitoring_type": 0,
         "private_settings": {}
     },
-    "current_scene": "LiveStream Out",
-    "current_program_scene": "LiveStream Out",
+    "current_scene": "_ScoreBoard",
+    "current_program_scene": "_ScoreBoard",
     "scene_order": [
         {
             "name": "LiveStream Out"
@@ -168,7 +168,7 @@
             "id": "image_source",
             "versioned_id": "image_source",
             "settings": {
-                "file": "/home/scotty/src/bodet-scorepad-parser/graphics/logo-wasa.png"
+                "file": "/home/scotty/src/bodet-scorepad-parser/graphics/logo-malans.png"
             },
             "mixers": 0,
             "sync": 0,
@@ -194,15 +194,15 @@
             "id": "text_ft2_source",
             "versioned_id": "text_ft2_source_v2",
             "settings": {
-                "text": "WSA",
+                "text": "AMA",
                 "font": {
-                    "face": "Source Code Pro",
-                    "style": "Semibold",
+                    "face": "Open Sans",
+                    "style": "Regular",
                     "size": 256,
-                    "flags": 1
+                    "flags": 0
                 },
-                "color1": 4278190080,
-                "color2": 4278190080
+                "color1": 4294967295,
+                "color2": 4294967295
             },
             "mixers": 0,
             "sync": 0,
@@ -342,15 +342,19 @@
             "id": "text_ft2_source",
             "versioned_id": "text_ft2_source_v2",
             "settings": {
-                "text": "HCR",
                 "font": {
-                    "face": "Source Code Pro",
-                    "style": "Semibold",
+                    "face": "Open Sans",
+                    "style": "Regular",
                     "size": 256,
-                    "flags": 1
+                    "flags": 0
                 },
-                "color1": 4278190080,
-                "color2": 4278190080
+                "color1": 4294967295,
+                "color2": 4294967295,
+                "drop_shadow": false,
+                "outline": false,
+                "antialiasing": true,
+                "log_mode": false,
+                "text": "HCR"
             },
             "mixers": 0,
             "sync": 0,
@@ -377,39 +381,6 @@
             "versioned_id": "image_source",
             "settings": {
                 "file": "/home/scotty/LiveStream/HC_Rychenberg_Winterthur_Logo.svg"
-            },
-            "mixers": 0,
-            "sync": 0,
-            "flags": 0,
-            "volume": 1.0,
-            "balance": 0.5,
-            "enabled": true,
-            "muted": false,
-            "push-to-mute": false,
-            "push-to-mute-delay": 0,
-            "push-to-talk": false,
-            "push-to-talk-delay": 0,
-            "hotkeys": {},
-            "deinterlace_mode": 0,
-            "deinterlace_field_order": 0,
-            "monitoring_type": 0,
-            "private_settings": {}
-        },
-        {
-            "prev_ver": 520093696,
-            "name": "hyphon",
-            "uuid": "1c98a61c-22d0-422c-a3fe-36792090ad5e",
-            "id": "text_ft2_source",
-            "versioned_id": "text_ft2_source_v2",
-            "settings": {
-                "text": "-",
-                "undo_uuid": "1c98a61c-22d0-422c-a3fe-36792090ad5e",
-                "font": {
-                    "face": "Sans Serif",
-                    "style": "",
-                    "size": 50,
-                    "flags": 0
-                }
             },
             "mixers": 0,
             "sync": 0,
@@ -575,6 +546,39 @@
         },
         {
             "prev_ver": 520093696,
+            "name": "period",
+            "uuid": "aac92e6c-30ef-4754-b278-5f72e5de3431",
+            "id": "url_source",
+            "versioned_id": "url_source",
+            "settings": {
+                "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\":\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"\",\"output_json_pointer\":\"/period\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"Score Home 2\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
+                "url": "/home/scotty/src/bodet-scorepad-parser/matchfacts.json",
+                "output_mapping_data": "[{\"css_props\":\"background-color: transparent;\\ncolor: #FFFFFF;\\nfont: \\\"open sans\\\";\\nfont-size: 50px;\\ntext-align: center;\",\"file_path\":\"\",\"name\":\"time\",\"output_source\":\"None / Internal rendering\",\"template_string\":\"{{output}}\",\"unhide_output_source\":false}]",
+                "send_to_stream": false,
+                "update_timer": 100,
+                "run_while_not_visible": false,
+                "is_image_url": false,
+                "render_width": 100
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 520093696,
             "name": "Score Guest",
             "uuid": "82b7a63b-bf99-4687-976b-81b7161d3ad2",
             "id": "url_source",
@@ -674,7 +678,7 @@
             "settings": {
                 "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\":\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"\",\"output_json_pointer\":\"/time\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"Time\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
                 "url": "/home/scotty/src/bodet-scorepad-parser/matchfacts.json",
-                "output_mapping_data": "[{\"css_props\":\"background-color: transparent;\\nfont: \\\"open sans\\\";\\ncolor: #FFFFFF;\\nfont-size: 50px;\\ntext-align: center;\",\"file_path\":\"\",\"name\":\"time\",\"output_source\":\"None / Internal rendering\",\"template_string\":\"{{output}}\",\"unhide_output_source\":false}]",
+                "output_mapping_data": "[{\"css_props\":\"background-color: transparent;\\nfont: \\\"open sans\\\";\\ncolor: #FFFFFF;\\nfont-weight: bold;\\nfont-size: 50px;\\ntext-align: center;\",\"file_path\":\"\",\"name\":\"time\",\"output_source\":\"None / Internal rendering\",\"template_string\":\"{{output}}\",\"unhide_output_source\":false}]",
                 "send_to_stream": false,
                 "update_timer": 100,
                 "run_while_not_visible": false,
@@ -793,7 +797,7 @@
             "id": "scene",
             "versioned_id": "scene",
             "settings": {
-                "id_counter": 22,
+                "id_counter": 23,
                 "custom_size": false,
                 "items": [
                     {
@@ -817,20 +821,20 @@
                         "id": 12,
                         "group_item_backup": false,
                         "pos": {
-                            "x": 15.0,
-                            "y": 16.0
+                            "x": 567.5,
+                            "y": 20.0
                         },
                         "pos_rel": {
-                            "x": -1.75,
-                            "y": -0.97037035226821899
+                            "x": -0.72685188055038452,
+                            "y": -0.96296298503875732
                         },
                         "scale": {
-                            "x": 1.0,
-                            "y": 1.0
+                            "x": 0.51783353090286255,
+                            "y": 0.51941746473312378
                         },
                         "scale_rel": {
-                            "x": 1.0,
-                            "y": 1.0
+                            "x": 0.51783353090286255,
+                            "y": 0.51941746473312378
                         },
                         "bounds": {
                             "x": 0.0,
@@ -872,11 +876,11 @@
                         "id": 11,
                         "group_item_backup": false,
                         "pos": {
-                            "x": 24.0,
+                            "x": 784.0,
                             "y": 23.0
                         },
                         "pos_rel": {
-                            "x": -1.7333333492279053,
+                            "x": -0.32592591643333435,
                             "y": -0.95740741491317749
                         },
                         "scale": {
@@ -927,11 +931,11 @@
                         "id": 7,
                         "group_item_backup": false,
                         "pos": {
-                            "x": -38.0,
+                            "x": 562.0,
                             "y": 23.0
                         },
                         "pos_rel": {
-                            "x": -1.8481481075286865,
+                            "x": -0.7370370626449585,
                             "y": -0.95740741491317749
                         },
                         "scale": {
@@ -965,7 +969,7 @@
                         "name": "Time",
                         "source_uuid": "764c5ac8-4c3d-4b40-abbf-23cbab6eb5bc",
                         "visible": true,
-                        "locked": true,
+                        "locked": false,
                         "rot": 0.0,
                         "scale_ref": {
                             "x": 1920.0,
@@ -982,75 +986,20 @@
                         "id": 9,
                         "group_item_backup": false,
                         "pos": {
-                            "x": 453.0,
-                            "y": 21.0
+                            "x": 881.0,
+                            "y": 28.0
                         },
                         "pos_rel": {
-                            "x": -0.93888890743255615,
-                            "y": -0.96111112833023071
+                            "x": -0.14629629254341125,
+                            "y": -0.94814813137054443
                         },
                         "scale": {
-                            "x": 0.89999997615814209,
-                            "y": 0.89552241563796997
+                            "x": 0.80500000715255737,
+                            "y": 0.80519479513168335
                         },
                         "scale_rel": {
-                            "x": 0.89999997615814209,
-                            "y": 0.89552241563796997
-                        },
-                        "bounds": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "bounds_rel": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "scale_filter": "disable",
-                        "blend_method": "default",
-                        "blend_type": "normal",
-                        "show_transition": {
-                            "duration": 0
-                        },
-                        "hide_transition": {
-                            "duration": 0
-                        },
-                        "private_settings": {}
-                    },
-                    {
-                        "name": "hyphon",
-                        "source_uuid": "1c98a61c-22d0-422c-a3fe-36792090ad5e",
-                        "visible": true,
-                        "locked": true,
-                        "rot": 0.0,
-                        "scale_ref": {
-                            "x": 1920.0,
-                            "y": 1080.0
-                        },
-                        "align": 5,
-                        "bounds_type": 0,
-                        "bounds_align": 0,
-                        "bounds_crop": false,
-                        "crop_left": 0,
-                        "crop_top": 0,
-                        "crop_right": 0,
-                        "crop_bottom": 0,
-                        "id": 15,
-                        "group_item_backup": false,
-                        "pos": {
-                            "x": 289.0,
-                            "y": 23.0
-                        },
-                        "pos_rel": {
-                            "x": -1.2425925731658936,
-                            "y": -0.95740741491317749
-                        },
-                        "scale": {
-                            "x": -0.9375,
-                            "y": 0.93999999761581421
-                        },
-                        "scale_rel": {
-                            "x": -0.9375,
-                            "y": 0.93999999761581421
+                            "x": 0.80500000715255737,
+                            "y": 0.80519479513168335
                         },
                         "bounds": {
                             "x": 0.0,
@@ -1092,11 +1041,11 @@
                         "id": 14,
                         "group_item_backup": false,
                         "pos": {
-                            "x": 24.0,
+                            "x": 585.0,
                             "y": 24.0
                         },
                         "pos_rel": {
-                            "x": -1.7333333492279053,
+                            "x": -0.69444441795349121,
                             "y": -0.95555555820465088
                         },
                         "scale": {
@@ -1147,20 +1096,20 @@
                         "id": 16,
                         "group_item_backup": false,
                         "pos": {
-                            "x": 467.0,
-                            "y": 21.0
+                            "x": 1262.0,
+                            "y": 20.0
                         },
                         "pos_rel": {
-                            "x": -0.91296297311782837,
-                            "y": -0.96111112833023071
+                            "x": 0.55925923585891724,
+                            "y": -0.96296298503875732
                         },
                         "scale": {
-                            "x": 0.18500000238418579,
-                            "y": 0.18500000238418579
+                            "x": 0.38775509595870972,
+                            "y": 0.38578680157661438
                         },
                         "scale_rel": {
-                            "x": 0.18500000238418579,
-                            "y": 0.18500000238418579
+                            "x": 0.38775509595870972,
+                            "y": 0.38578680157661438
                         },
                         "bounds": {
                             "x": 0.0,
@@ -1185,7 +1134,7 @@
                         "name": "hcr text",
                         "source_uuid": "c8c61cc3-0ea6-44fb-b451-bf98be5e537d",
                         "visible": true,
-                        "locked": true,
+                        "locked": false,
                         "rot": 0.0,
                         "scale_ref": {
                             "x": 1920.0,
@@ -1202,20 +1151,20 @@
                         "id": 21,
                         "group_item_backup": false,
                         "pos": {
-                            "x": 94.0,
-                            "y": 25.0
+                            "x": 685.0,
+                            "y": 28.0
                         },
                         "pos_rel": {
-                            "x": -1.6037037372589111,
-                            "y": -0.95370370149612427
+                            "x": -0.50925928354263306,
+                            "y": -0.94814813137054443
                         },
                         "scale": {
-                            "x": 0.19913420081138611,
-                            "y": 0.20077219605445862
+                            "x": 0.17748917639255524,
+                            "y": 0.17760618031024933
                         },
                         "scale_rel": {
-                            "x": 0.19913420081138611,
-                            "y": 0.20077219605445862
+                            "x": 0.17748917639255524,
+                            "y": 0.17760618031024933
                         },
                         "bounds": {
                             "x": 0.0,
@@ -1257,20 +1206,75 @@
                         "id": 22,
                         "group_item_backup": false,
                         "pos": {
-                            "x": 365.0,
-                            "y": 25.0
+                            "x": 1144.0,
+                            "y": 28.0
                         },
                         "pos_rel": {
-                            "x": -1.1018518209457397,
-                            "y": -0.95370370149612427
+                            "x": 0.34074074029922485,
+                            "y": -0.94814813137054443
                         },
                         "scale": {
-                            "x": 0.19913420081138611,
-                            "y": 0.20077219605445862
+                            "x": 0.17965367436408997,
+                            "y": 0.1796875
                         },
                         "scale_rel": {
-                            "x": 0.19913420081138611,
-                            "y": 0.20077219605445862
+                            "x": 0.17965367436408997,
+                            "y": 0.1796875
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "period",
+                        "source_uuid": "aac92e6c-30ef-4754-b278-5f72e5de3431",
+                        "visible": true,
+                        "locked": true,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 23,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 786.0,
+                            "y": 86.0
+                        },
+                        "pos_rel": {
+                            "x": -0.32222223281860352,
+                            "y": -0.84074074029922485
+                        },
+                        "scale": {
+                            "x": 0.55312502384185791,
+                            "y": 0.55844157934188843
+                        },
+                        "scale_rel": {
+                            "x": 0.55312502384185791,
+                            "y": 0.55844157934188843
                         },
                         "bounds": {
                             "x": 0.0,
@@ -1314,8 +1318,6 @@
                 "libobs.hide_scene_item.7": [],
                 "libobs.show_scene_item.9": [],
                 "libobs.hide_scene_item.9": [],
-                "libobs.show_scene_item.15": [],
-                "libobs.hide_scene_item.15": [],
                 "libobs.show_scene_item.14": [],
                 "libobs.hide_scene_item.14": [],
                 "libobs.show_scene_item.16": [],
@@ -1323,7 +1325,9 @@
                 "libobs.show_scene_item.21": [],
                 "libobs.hide_scene_item.21": [],
                 "libobs.show_scene_item.22": [],
-                "libobs.hide_scene_item.22": []
+                "libobs.hide_scene_item.22": [],
+                "libobs.show_scene_item.23": [],
+                "libobs.hide_scene_item.23": []
             },
             "deinterlace_mode": 0,
             "deinterlace_field_order": 0,
