@@ -9,6 +9,7 @@ LRC_LENGTH = 1  # Length of LRC byte
 
 # File containing binary data
 FILE_PATH = 'test-messages.bin'
+# FILE_PATH = 'all_messages.bin'
 SERVER_ADDRESS = ('localhost', 4001)
 INTERVAL = 100  # Interval between sending messages (in milliseconds)
 
@@ -63,13 +64,13 @@ def main():
     print(f"Extracted {len(messages)} messages.")
     
     for i, message in enumerate(messages):
-        if should_send_message(message):
+#        if should_send_message(message):
             print(f"Sending message {i+1}/{len(messages)}")
             send_message_to_server(message, SERVER_ADDRESS)
             time.sleep(INTERVAL / 1000)  # Convert milliseconds to seconds
-        else:
-            print(f"Skipped message {i+1}/{len(messages)}: Does not meet criteria.")
-            print(f"Message: {message.hex()}")
+#        else:
+#            print(f"Skipped message {i+1}/{len(messages)}: Does not meet criteria.")
+#            print(f"Message: {message.hex()}")
 
 if __name__ == '__main__':
     main()

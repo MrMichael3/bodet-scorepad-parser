@@ -1,5 +1,6 @@
 import socket
 import json
+import time
 
 def calculate_lrc(frame):
     lrc = 0
@@ -36,6 +37,12 @@ def process_data(data):
                 collecting = False  # Stop collecting
 
     return messages
+
+def save_message_to_file(message):
+    timestamp = time.strftime("%Y%m%d")
+    filename = f"all_messages_{timestamp}.bin"
+    with open(filename, "ab") as file:
+        file.write(bytes(message))
 
 def process_message_by_type(message):
     print(f"Full Message: {message}")
@@ -108,6 +115,7 @@ def start_tcp_server(host, port):
                 data = client_socket.recv(1024)  # Receive up to 1024 bytes of data
                 while data:
                     all_messages = process_data(data)
+                    save_message_to_file(data)
 
                     for message in all_messages:
                         result = process_message_by_type(message)
@@ -119,11 +127,10 @@ def start_tcp_server(host, port):
                                 # print(f"*** *** *** Message 12!!!!")
                                 print(f"Message {result[1]}: {result[2]}, Raw: {[f'0x{byte:02X}' for byte in result[0]]}")                            
                             elif result[1] == '13':
-                                # print(f"*** *** *** Message 12!!!!")
+                                # print(f"*** *** *** Message 13!!!!")
                                 print(f"Message {result[1]}: {result[2]}, Raw: {[f'0x{byte:02X}' for byte in result[0]]}")
                             
                             else: 
-                                # print(f"*** *** *** Message 13!!!!")
                                 print(f"*** *** *** Another (unprocessed) message!!! ")
                                 print(f"Message {result[1]}: {result[2]}, Raw: {[f'0x{byte:02X}' for byte in result[0]]}")
 
