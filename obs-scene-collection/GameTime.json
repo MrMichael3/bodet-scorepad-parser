@@ -189,20 +189,12 @@
         },
         {
             "prev_ver": 520093696,
-            "name": "guest text",
-            "uuid": "e50f0dff-55c8-47db-b22f-33c977587d16",
+            "name": "guest txt",
+            "uuid": "26230cb1-8bb9-4ed2-bbae-445f4370480f",
             "id": "text_ft2_source",
             "versioned_id": "text_ft2_source_v2",
             "settings": {
-                "text": "AMA",
-                "font": {
-                    "face": "Open Sans",
-                    "style": "Regular",
-                    "size": 256,
-                    "flags": 0
-                },
-                "color1": 4294967295,
-                "color2": 4294967295
+                "text": "MAL"
             },
             "mixers": 0,
             "sync": 0,
@@ -337,24 +329,18 @@
         },
         {
             "prev_ver": 520093696,
-            "name": "hcr text",
-            "uuid": "c8c61cc3-0ea6-44fb-b451-bf98be5e537d",
+            "name": "hcr txt",
+            "uuid": "cc039b66-d4ea-40cd-81e6-f609812e5d89",
             "id": "text_ft2_source",
             "versioned_id": "text_ft2_source_v2",
             "settings": {
+                "text": "HCR",
                 "font": {
-                    "face": "Open Sans",
-                    "style": "Regular",
+                    "face": "Sans Serif",
+                    "style": "",
                     "size": 256,
                     "flags": 0
-                },
-                "color1": 4294967295,
-                "color2": 4294967295,
-                "drop_shadow": false,
-                "outline": false,
-                "antialiasing": true,
-                "log_mode": false,
-                "text": "HCR"
+                }
             },
             "mixers": 0,
             "sync": 0,
@@ -413,7 +399,7 @@
                         "name": "_Main Camera",
                         "source_uuid": "816bdd04-e6cc-4b09-a042-d7188d2a3a88",
                         "visible": true,
-                        "locked": false,
+                        "locked": true,
                         "rot": 0.0,
                         "scale_ref": {
                             "x": 1920.0,
@@ -553,7 +539,7 @@
             "settings": {
                 "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\":\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"\",\"output_json_pointer\":\"/period\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"Score Home 2\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
                 "url": "/home/scotty/src/bodet-scorepad-parser/matchfacts.json",
-                "output_mapping_data": "[{\"css_props\":\"background-color: transparent;\\ncolor: #FFFFFF;\\nfont: \\\"open sans\\\";\\nfont-size: 50px;\\ntext-align: center;\",\"file_path\":\"\",\"name\":\"time\",\"output_source\":\"None / Internal rendering\",\"template_string\":\"{{output}}\",\"unhide_output_source\":false}]",
+                "output_mapping_data": "[{\"css_props\":\"background-color: transparent;\\ncolor: #FFFFFF;\\nfont-family: sans-serif;\\nfont-size: 50px;\\ntext-align: center;\",\"file_path\":\"\",\"name\":\"time\",\"output_source\":\"None / Internal rendering\",\"template_string\":\"{{output}}\",\"unhide_output_source\":false}]",
                 "send_to_stream": false,
                 "update_timer": 100,
                 "run_while_not_visible": false,
@@ -586,7 +572,7 @@
             "settings": {
                 "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\":\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"\",\"output_json_pointer\":\"/score_guest\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"Score Guest\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
                 "url": "/home/scotty/src/bodet-scorepad-parser/matchfacts.json",
-                "output_mapping_data": "[{\"css_props\":\"background-color: transparent;\\ncolor: #FFFFFF;\\nfont-size: 48px;\\ntext-align: center;\",\"file_path\":\"\",\"name\":\"time\",\"output_source\":\"None / Internal rendering\",\"template_string\":\"{{output}}\",\"unhide_output_source\":false}]",
+                "output_mapping_data": "[{\"css_props\":\"background-color: transparent;\\ncolor: #FFFFFF;\\nfont-family: sans-serif;\\nfont-size: 48px;\\ntext-align: center;\",\"file_path\":\"\",\"name\":\"time\",\"output_source\":\"None / Internal rendering\",\"template_string\":\"{{output}}\",\"unhide_output_source\":false}]",
                 "send_to_stream": false,
                 "update_timer": 100,
                 "run_while_not_visible": false,
@@ -619,7 +605,7 @@
             "settings": {
                 "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\":\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"\",\"output_json_pointer\":\"/score_home\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"Score Home\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
                 "url": "/home/scotty/src/bodet-scorepad-parser/matchfacts.json",
-                "output_mapping_data": "[{\"css_props\":\"background-color: transparent;\\ncolor: #FFFFFF;\\nfont: \\\"open sans\\\";\\nfont-size: 50px;\\ntext-align: center;\",\"file_path\":\"\",\"name\":\"time\",\"output_source\":\"None / Internal rendering\",\"template_string\":\"{{output}}\",\"unhide_output_source\":false}]",
+                "output_mapping_data": "[{\"css_props\":\"background-color: transparent;\\ncolor: #FFFFFF;\\nfont-family: sans-serif;\\nfont-size: 50px;\\ntext-align: center;\",\"file_path\":\"\",\"name\":\"time\",\"output_source\":\"None / Internal rendering\",\"template_string\":\"{{output}}\",\"unhide_output_source\":false}]",
                 "send_to_stream": false,
                 "update_timer": 100,
                 "run_while_not_visible": false,
@@ -678,7 +664,7 @@
             "settings": {
                 "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\":\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"\",\"output_json_pointer\":\"/time\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"Time\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
                 "url": "/home/scotty/src/bodet-scorepad-parser/matchfacts.json",
-                "output_mapping_data": "[{\"css_props\":\"background-color: transparent;\\nfont: \\\"open sans\\\";\\ncolor: #FFFFFF;\\nfont-weight: bold;\\nfont-size: 50px;\\ntext-align: center;\",\"file_path\":\"\",\"name\":\"time\",\"output_source\":\"None / Internal rendering\",\"template_string\":\"{{output}}\",\"unhide_output_source\":false}]",
+                "output_mapping_data": "[{\"css_props\":\"background-color: transparent;\\nfont:  \\\"sans serif\\\";\\ncolor: #FFFFFF;\\nfont-weight: bold;\\nfont-size: 50px;\\ntext-align: center;\",\"file_path\":\"\",\"name\":\"time\",\"output_source\":\"None / Internal rendering\",\"template_string\":\"{{output}}\",\"unhide_output_source\":false}]",
                 "send_to_stream": false,
                 "update_timer": 100,
                 "run_while_not_visible": false,
@@ -797,7 +783,7 @@
             "id": "scene",
             "versioned_id": "scene",
             "settings": {
-                "id_counter": 23,
+                "id_counter": 25,
                 "custom_size": false,
                 "items": [
                     {
@@ -859,7 +845,7 @@
                         "name": "Score Guest",
                         "source_uuid": "82b7a63b-bf99-4687-976b-81b7161d3ad2",
                         "visible": true,
-                        "locked": true,
+                        "locked": false,
                         "rot": 0.0,
                         "scale_ref": {
                             "x": 1920.0,
@@ -876,11 +862,11 @@
                         "id": 11,
                         "group_item_backup": false,
                         "pos": {
-                            "x": 784.0,
+                            "x": 1031.0,
                             "y": 23.0
                         },
                         "pos_rel": {
-                            "x": -0.32592591643333435,
+                            "x": 0.13148148357868195,
                             "y": -0.95740741491317749
                         },
                         "scale": {
@@ -931,11 +917,11 @@
                         "id": 7,
                         "group_item_backup": false,
                         "pos": {
-                            "x": 562.0,
+                            "x": 799.0,
                             "y": 23.0
                         },
                         "pos_rel": {
-                            "x": -0.7370370626449585,
+                            "x": -0.29814815521240234,
                             "y": -0.95740741491317749
                         },
                         "scale": {
@@ -969,7 +955,7 @@
                         "name": "Time",
                         "source_uuid": "764c5ac8-4c3d-4b40-abbf-23cbab6eb5bc",
                         "visible": true,
-                        "locked": false,
+                        "locked": true,
                         "rot": 0.0,
                         "scale_ref": {
                             "x": 1920.0,
@@ -986,11 +972,11 @@
                         "id": 9,
                         "group_item_backup": false,
                         "pos": {
-                            "x": 881.0,
+                            "x": 880.0,
                             "y": 28.0
                         },
                         "pos_rel": {
-                            "x": -0.14629629254341125,
+                            "x": -0.14814814925193787,
                             "y": -0.94814813137054443
                         },
                         "scale": {
@@ -1000,6 +986,61 @@
                         "scale_rel": {
                             "x": 0.80500000715255737,
                             "y": 0.80519479513168335
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "hcr txt",
+                        "source_uuid": "cc039b66-d4ea-40cd-81e6-f609812e5d89",
+                        "visible": true,
+                        "locked": true,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 25,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 687.0,
+                            "y": 29.0
+                        },
+                        "pos_rel": {
+                            "x": -0.50555557012557983,
+                            "y": -0.94629627466201782
+                        },
+                        "scale": {
+                            "x": 0.17547169327735901,
+                            "y": 0.1750972718000412
+                        },
+                        "scale_rel": {
+                            "x": 0.17547169327735901,
+                            "y": 0.1750972718000412
                         },
                         "bounds": {
                             "x": 0.0,
@@ -1076,6 +1117,61 @@
                         "private_settings": {}
                     },
                     {
+                        "name": "guest txt",
+                        "source_uuid": "26230cb1-8bb9-4ed2-bbae-445f4370480f",
+                        "visible": true,
+                        "locked": true,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 24,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 1133.0,
+                            "y": 29.0
+                        },
+                        "pos_rel": {
+                            "x": 0.3203703761100769,
+                            "y": -0.94629627466201782
+                        },
+                        "scale": {
+                            "x": 0.17547169327735901,
+                            "y": 0.1750972718000412
+                        },
+                        "scale_rel": {
+                            "x": 0.17547169327735901,
+                            "y": 0.1750972718000412
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
                         "name": "guest logo",
                         "source_uuid": "6ef06b50-d1ee-47eb-b3e7-37f23efb3385",
                         "visible": true,
@@ -1131,116 +1227,6 @@
                         "private_settings": {}
                     },
                     {
-                        "name": "hcr text",
-                        "source_uuid": "c8c61cc3-0ea6-44fb-b451-bf98be5e537d",
-                        "visible": true,
-                        "locked": false,
-                        "rot": 0.0,
-                        "scale_ref": {
-                            "x": 1920.0,
-                            "y": 1080.0
-                        },
-                        "align": 5,
-                        "bounds_type": 0,
-                        "bounds_align": 0,
-                        "bounds_crop": false,
-                        "crop_left": 0,
-                        "crop_top": 0,
-                        "crop_right": 0,
-                        "crop_bottom": 0,
-                        "id": 21,
-                        "group_item_backup": false,
-                        "pos": {
-                            "x": 685.0,
-                            "y": 28.0
-                        },
-                        "pos_rel": {
-                            "x": -0.50925928354263306,
-                            "y": -0.94814813137054443
-                        },
-                        "scale": {
-                            "x": 0.17748917639255524,
-                            "y": 0.17760618031024933
-                        },
-                        "scale_rel": {
-                            "x": 0.17748917639255524,
-                            "y": 0.17760618031024933
-                        },
-                        "bounds": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "bounds_rel": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "scale_filter": "disable",
-                        "blend_method": "default",
-                        "blend_type": "normal",
-                        "show_transition": {
-                            "duration": 0
-                        },
-                        "hide_transition": {
-                            "duration": 0
-                        },
-                        "private_settings": {}
-                    },
-                    {
-                        "name": "guest text",
-                        "source_uuid": "e50f0dff-55c8-47db-b22f-33c977587d16",
-                        "visible": true,
-                        "locked": true,
-                        "rot": 0.0,
-                        "scale_ref": {
-                            "x": 1920.0,
-                            "y": 1080.0
-                        },
-                        "align": 5,
-                        "bounds_type": 0,
-                        "bounds_align": 0,
-                        "bounds_crop": false,
-                        "crop_left": 0,
-                        "crop_top": 0,
-                        "crop_right": 0,
-                        "crop_bottom": 0,
-                        "id": 22,
-                        "group_item_backup": false,
-                        "pos": {
-                            "x": 1144.0,
-                            "y": 28.0
-                        },
-                        "pos_rel": {
-                            "x": 0.34074074029922485,
-                            "y": -0.94814813137054443
-                        },
-                        "scale": {
-                            "x": 0.17965367436408997,
-                            "y": 0.1796875
-                        },
-                        "scale_rel": {
-                            "x": 0.17965367436408997,
-                            "y": 0.1796875
-                        },
-                        "bounds": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "bounds_rel": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "scale_filter": "disable",
-                        "blend_method": "default",
-                        "blend_type": "normal",
-                        "show_transition": {
-                            "duration": 0
-                        },
-                        "hide_transition": {
-                            "duration": 0
-                        },
-                        "private_settings": {}
-                    },
-                    {
                         "name": "period",
                         "source_uuid": "aac92e6c-30ef-4754-b278-5f72e5de3431",
                         "visible": true,
@@ -1261,20 +1247,20 @@
                         "id": 23,
                         "group_item_backup": false,
                         "pos": {
-                            "x": 786.0,
-                            "y": 86.0
+                            "x": 937.0,
+                            "y": 88.0
                         },
                         "pos_rel": {
-                            "x": -0.32222223281860352,
-                            "y": -0.84074074029922485
+                            "x": -0.042592592537403107,
+                            "y": -0.83703702688217163
                         },
                         "scale": {
-                            "x": 0.55312502384185791,
-                            "y": 0.55844157934188843
+                            "x": 0.50156247615814209,
+                            "y": 0.50649350881576538
                         },
                         "scale_rel": {
-                            "x": 0.55312502384185791,
-                            "y": 0.55844157934188843
+                            "x": 0.50156247615814209,
+                            "y": 0.50649350881576538
                         },
                         "bounds": {
                             "x": 0.0,
@@ -1318,14 +1304,14 @@
                 "libobs.hide_scene_item.7": [],
                 "libobs.show_scene_item.9": [],
                 "libobs.hide_scene_item.9": [],
+                "libobs.show_scene_item.25": [],
+                "libobs.hide_scene_item.25": [],
                 "libobs.show_scene_item.14": [],
                 "libobs.hide_scene_item.14": [],
+                "libobs.show_scene_item.24": [],
+                "libobs.hide_scene_item.24": [],
                 "libobs.show_scene_item.16": [],
                 "libobs.hide_scene_item.16": [],
-                "libobs.show_scene_item.21": [],
-                "libobs.hide_scene_item.21": [],
-                "libobs.show_scene_item.22": [],
-                "libobs.hide_scene_item.22": [],
                 "libobs.show_scene_item.23": [],
                 "libobs.hide_scene_item.23": []
             },
