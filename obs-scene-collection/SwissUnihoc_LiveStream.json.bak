@@ -194,9 +194,7 @@
             "id": "text_ft2_source",
             "versioned_id": "text_ft2_source_v2",
             "settings": {
-                "text": "MAL",
-                "color1": 4294967295,
-                "color2": 4294967295
+                "text": "MAL"
             },
             "mixers": 0,
             "sync": 0,
@@ -342,9 +340,7 @@
                     "style": "",
                     "size": 256,
                     "flags": 0
-                },
-                "color1": 4294967295,
-                "color2": 4294967295
+                }
             },
             "mixers": 0,
             "sync": 0,
@@ -567,9 +563,7 @@
             "id": "text_ft2_source",
             "versioned_id": "text_ft2_source_v2",
             "settings": {
-                "text": "03:20",
-                "color1": 4284663257,
-                "color2": 4284663257
+                "text": "03:20"
             },
             "mixers": 0,
             "sync": 0,
@@ -586,139 +580,7 @@
             "deinterlace_mode": 0,
             "deinterlace_field_order": 0,
             "monitoring_type": 0,
-            "private_settings": {},
-            "filters": [
-                {
-                    "prev_ver": 520093696,
-                    "name": "Render Delay",
-                    "uuid": "df3ed8a5-cd5f-41ac-9024-3d6be281ff6f",
-                    "id": "gpu_delay",
-                    "versioned_id": "gpu_delay",
-                    "settings": {
-                        "delay_ms": 500
-                    },
-                    "mixers": 0,
-                    "sync": 0,
-                    "flags": 0,
-                    "volume": 1.0,
-                    "balance": 0.5,
-                    "enabled": true,
-                    "muted": false,
-                    "push-to-mute": false,
-                    "push-to-mute-delay": 0,
-                    "push-to-talk": false,
-                    "push-to-talk-delay": 0,
-                    "hotkeys": {},
-                    "deinterlace_mode": 0,
-                    "deinterlace_field_order": 0,
-                    "monitoring_type": 0,
-                    "private_settings": {}
-                },
-                {
-                    "prev_ver": 520093696,
-                    "name": "Render Delay 2",
-                    "uuid": "bc0a03fd-8110-4d37-a6b6-a01cae991780",
-                    "id": "gpu_delay",
-                    "versioned_id": "gpu_delay",
-                    "settings": {
-                        "delay_ms": 500
-                    },
-                    "mixers": 0,
-                    "sync": 0,
-                    "flags": 0,
-                    "volume": 1.0,
-                    "balance": 0.5,
-                    "enabled": true,
-                    "muted": false,
-                    "push-to-mute": false,
-                    "push-to-mute-delay": 0,
-                    "push-to-talk": false,
-                    "push-to-talk-delay": 0,
-                    "hotkeys": {},
-                    "deinterlace_mode": 0,
-                    "deinterlace_field_order": 0,
-                    "monitoring_type": 0,
-                    "private_settings": {}
-                },
-                {
-                    "prev_ver": 520093696,
-                    "name": "Render Delay 3",
-                    "uuid": "02d9d391-d78d-4643-a8bf-83ee00d43e71",
-                    "id": "gpu_delay",
-                    "versioned_id": "gpu_delay",
-                    "settings": {
-                        "delay_ms": 500
-                    },
-                    "mixers": 0,
-                    "sync": 0,
-                    "flags": 0,
-                    "volume": 1.0,
-                    "balance": 0.5,
-                    "enabled": true,
-                    "muted": false,
-                    "push-to-mute": false,
-                    "push-to-mute-delay": 0,
-                    "push-to-talk": false,
-                    "push-to-talk-delay": 0,
-                    "hotkeys": {},
-                    "deinterlace_mode": 0,
-                    "deinterlace_field_order": 0,
-                    "monitoring_type": 0,
-                    "private_settings": {}
-                },
-                {
-                    "prev_ver": 520093696,
-                    "name": "Render Delay 4",
-                    "uuid": "d584001c-f562-41a9-9ac8-08f8b26479a8",
-                    "id": "gpu_delay",
-                    "versioned_id": "gpu_delay",
-                    "settings": {
-                        "delay_ms": 500
-                    },
-                    "mixers": 0,
-                    "sync": 0,
-                    "flags": 0,
-                    "volume": 1.0,
-                    "balance": 0.5,
-                    "enabled": true,
-                    "muted": false,
-                    "push-to-mute": false,
-                    "push-to-mute-delay": 0,
-                    "push-to-talk": false,
-                    "push-to-talk-delay": 0,
-                    "hotkeys": {},
-                    "deinterlace_mode": 0,
-                    "deinterlace_field_order": 0,
-                    "monitoring_type": 0,
-                    "private_settings": {}
-                },
-                {
-                    "prev_ver": 520093696,
-                    "name": "Render Delay 5",
-                    "uuid": "6564c66d-e48b-43d5-ae01-694ee1cfce9c",
-                    "id": "gpu_delay",
-                    "versioned_id": "gpu_delay",
-                    "settings": {
-                        "delay_ms": 500
-                    },
-                    "mixers": 0,
-                    "sync": 0,
-                    "flags": 0,
-                    "volume": 1.0,
-                    "balance": 0.5,
-                    "enabled": true,
-                    "muted": false,
-                    "push-to-mute": false,
-                    "push-to-mute-delay": 0,
-                    "push-to-talk": false,
-                    "push-to-talk-delay": 0,
-                    "hotkeys": {},
-                    "deinterlace_mode": 0,
-                    "deinterlace_field_order": 0,
-                    "monitoring_type": 0,
-                    "private_settings": {}
-                }
-            ]
+            "private_settings": {}
         },
         {
             "prev_ver": 520093696,
@@ -733,9 +595,7 @@
                     "style": "",
                     "size": 48,
                     "flags": 0
-                },
-                "color1": 4294967295,
-                "color2": 4294967295
+                }
             },
             "mixers": 0,
             "sync": 0,
@@ -761,9 +621,7 @@
             "id": "text_ft2_source",
             "versioned_id": "text_ft2_source_v2",
             "settings": {
-                "text": "2",
-                "color1": 4294967295,
-                "color2": 4294967295
+                "text": "2"
             },
             "mixers": 0,
             "sync": 0,
@@ -789,9 +647,7 @@
             "id": "text_ft2_source",
             "versioned_id": "text_ft2_source_v2",
             "settings": {
-                "text": "4",
-                "color1": 4294967295,
-                "color2": 4294967295
+                "text": "4"
             },
             "mixers": 0,
             "sync": 0,
@@ -1465,7 +1321,7 @@
                         "name": "txt_matchtime",
                         "source_uuid": "ebf39af0-0388-44a5-8e97-ff0674d6f9e1",
                         "visible": true,
-                        "locked": true,
+                        "locked": false,
                         "rot": 0.0,
                         "scale_ref": {
                             "x": 1920.0,
@@ -1761,20 +1617,20 @@
                 "libobs.hide_scene_item.24": [],
                 "libobs.show_scene_item.16": [],
                 "libobs.hide_scene_item.16": [],
-                "libobs.show_scene_item.30": [],
-                "libobs.hide_scene_item.30": [],
-                "libobs.show_scene_item.32": [],
-                "libobs.hide_scene_item.32": [],
                 "libobs.show_scene_item.28": [],
                 "libobs.hide_scene_item.28": [],
-                "libobs.show_scene_item.34": [],
-                "libobs.hide_scene_item.34": [],
-                "libobs.show_scene_item.31": [],
-                "libobs.hide_scene_item.31": [],
-                "libobs.show_scene_item.33": [],
-                "libobs.hide_scene_item.33": [],
                 "libobs.show_scene_item.29": [],
                 "libobs.hide_scene_item.29": [],
+                "libobs.show_scene_item.30": [],
+                "libobs.hide_scene_item.30": [],
+                "libobs.show_scene_item.31": [],
+                "libobs.hide_scene_item.31": [],
+                "libobs.show_scene_item.32": [],
+                "libobs.hide_scene_item.32": [],
+                "libobs.show_scene_item.33": [],
+                "libobs.hide_scene_item.33": [],
+                "libobs.show_scene_item.34": [],
+                "libobs.hide_scene_item.34": [],
                 "libobs.show_scene_item.35": [],
                 "libobs.hide_scene_item.35": []
             },
