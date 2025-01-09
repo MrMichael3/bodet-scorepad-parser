@@ -2,6 +2,14 @@ import socket
 import json
 import time
 
+
+# Global filename generated once at script startup
+timestamp = time.strftime("%Y%m%d_%H%M%S")
+MESSAGE_LOG_FILE = f"all_messages_{timestamp}.bin"
+
+# Enable or disable saving messages to a file
+ENABLE_SAVE_MESSAGES = True
+
 def calculate_lrc(frame):
     lrc = 0
     # XOR all bytes between Address (after SOH) and ETX (inclusive)
@@ -39,13 +47,13 @@ def process_data(data):
     return messages
 
 def save_message_to_file(message):
-    timestamp = time.strftime("%Y%m%d")
-    filename = f"all_messages_{timestamp}.bin"
-    with open(filename, "ab") as file:
-        file.write(bytes(message))
+    if ENABLE_SAVE_MESSAGES:
+        with open(MESSAGE_LOG_FILE, "ab") as file:
+            file.write(bytes(message))
+
 
 def process_message_by_type(message):
-    print(f"Full Message: {message}")
+    # print(f"Full Message: {message}")
     def interpret_byte(byte):
         return 0 if byte == 0x20 else int(chr(byte)) if chr(byte).isdigit() else chr(byte)
 
@@ -54,7 +62,7 @@ def process_message_by_type(message):
         return None
 
     msg_type = (message[4], message[5])
-    print(f"message Type: {msg_type}")
+    # print(f"message Type: {msg_type}")
     if msg_type == (0x31, 0x31):  # Message type 11
         mins_tens = interpret_byte(message[8])
         mins_ones = interpret_byte(message[9])
@@ -76,7 +84,7 @@ def process_message_by_type(message):
 
         period_byte = message[18]
         period = interpret_byte(period_byte) if period_byte != 0x20 else 0
-
+        print(f"Time: {mins:02}:{secs:02} | Home Score:{scorehome} | Guest Score: {scoreguest} ")
         return (message, '11', mins, secs, scorehome, scoreguest, period)
 
     elif msg_type == (0x31, 0x32):  # Message type 12
@@ -124,11 +132,13 @@ def start_tcp_server(host, port):
                                 # print(f"Message 11: Mins: {result[2]}, Secs: {result[3]}, Score Home: {result[4]}, Score Guest: {result[5]}, Period: {result[6]}, Raw: {[f'0x{byte:02X}' for byte in result[0]]}")
                                 write_status_to_json(result[4], result[5], result[2], result[3], result[6])
                             elif result[1] == '12':
+                                pass
                                 # print(f"*** *** *** Message 12!!!!")
-                                print(f"Message {result[1]}: {result[2]}, Raw: {[f'0x{byte:02X}' for byte in result[0]]}")                            
+                                # print(f"Message {result[1]}: {result[2]}, Raw: {[f'0x{byte:02X}' for byte in result[0]]}")                            
                             elif result[1] == '13':
+                                pass
                                 # print(f"*** *** *** Message 13!!!!")
-                                print(f"Message {result[1]}: {result[2]}, Raw: {[f'0x{byte:02X}' for byte in result[0]]}")
+                                # print(f"Message {result[1]}: {result[2]}, Raw: {[f'0x{byte:02X}' for byte in result[0]]}")
                             
                             else: 
                                 print(f"*** *** *** Another (unprocessed) message!!! ")
