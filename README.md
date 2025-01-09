@@ -73,7 +73,7 @@ The JSON file location can be customized by changing the filename parameter in t
 # How It Works
 1. The script listens for TCP connections and receives data in chunks.
 2. Messages are parsed according to predefined markers and structure.
-3. and LRC check is calculated over each received message to ensure integrity. 
+3. the LRC check is calculated over each received message to ensure its integrity. 
 4. Only messages with type `11, 12 and 13` are processed further.
    
    - message #11, #12 and #13 are related to floorball. For other message types see the [Guide from Bodet](https://static.bodet-sport.com/images/stories/EN/support/Pdfs/manuals/Scorepad/608264-Network%20output%20and%20protocols-Scorepad.pdf)
@@ -94,14 +94,14 @@ A typical message might look like this in hex:
 
 ```
 
-explanation to some of the messages: 
+explanation to some of the transmitted frames: 
 - Start of Heading (SOH)  = 01 hexadecimal
 - Start of text (STX) = 02 hexadecimal
 - End of text (ETX) = 03 hexadecimal
 - after ETX an additional byte gets transmited. The
   - Longitudinal Redundancy Check (LRC)
 
-All details about the structure of the messages can be found in the above linked manual from Bodet. 
+All details about the structure of the messages can be found in the [linked manual from Bodet](https://static.bodet-sport.com/images/stories/EN/support/Pdfs/manuals/Scorepad/608264-Network%20output%20and%20protocols-Scorepad.pdf). 
 
 ## what's next
 - implement additional message types
