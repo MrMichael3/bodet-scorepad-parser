@@ -5,15 +5,16 @@ The script is designed to parse specific messages and extract details such as sc
 
 ## Features
 
-Currently the script *only listens for data related to floorball*. It serves as a template for other sports.   
+Currently the script *only listens for data related to floorball*. It can serve as a template for other sports.   
 
 - Captures real-time data from a TCP socket.
-- Filters and processes only messages with a specific type identifier (number `11`).
+- Filters and processes only messages with a few specific type identifiers (number `11, 12 and 13`).
 - Message `11` contains the following data: 
   - Home team score.
   - Guest team score.
   - Current game time (minutes and seconds).
   - Current game period (including overtime indicated as "E").
+- Message `12 and 13` contain data regarding penalties (which are not parsed yet). 
 - Outputs the parsed information to the console and a JSON file.
 
 ## Prerequisites
@@ -39,14 +40,15 @@ python bodet-network.py
 4. make sure to configure your Bodet Scorepad accordingly. The [Guide from Bodet](https://static.bodet-sport.com/images/stories/EN/support/Pdfs/manuals/Scorepad/608264-Network%20output%20and%20protocols-Scorepad.pdf) explains how to achive that.
 
 ### Testing
-If you happen not to have a Scorepad with you all the time you can make use of the `test.sh` script. 
-IT will send some data to localhost:4001
+If you happen not to have a Scorepad with you all the time you can make use of the `send-test-messages.py` script. 
+It will send some data to localhost:4001. By default the test data is read from the file `test-messages.bin`. 
+In the script `bodet-network.py`  you also can enable the switch `ENABLE_SAVE_MESSAGES` which will save all messages the script receives from a Bodet Scorepad into a file for later replay.  
 
 ## Output
 - Console Output: Each parsed message will be displayed in the console, showing the home score, guest score, time, and period.
 Console:
 ```yaml
-Message with number 11 (1): Mins: 2, Secs: 15, Score Home: 0, Score Guest: 20, Period: 1
+Time: 03:14 | Home Score:4 | Guest Score: 2
 ```` 
 - JSON File: The current status is saved to `status.json` in the following format:
 ```json
@@ -71,9 +73,10 @@ The JSON file location can be customized by changing the filename parameter in t
 # How It Works
 1. The script listens for TCP connections and receives data in chunks.
 2. Messages are parsed according to predefined markers and structure.
-3. Only messages with type `11` are processed further.
+3. and LRC check is calculated over each received message to ensure integrity. 
+4. Only messages with type `11, 12 and 13` are processed further.
    
-   - message #11 means floorball. For other message types see the [Guide from Bodet](https://static.bodet-sport.com/images/stories/EN/support/Pdfs/manuals/Scorepad/608264-Network%20output%20and%20protocols-Scorepad.pdf)
+   - message #11, #12 and #13 are related to floorball. For other message types see the [Guide from Bodet](https://static.bodet-sport.com/images/stories/EN/support/Pdfs/manuals/Scorepad/608264-Network%20output%20and%20protocols-Scorepad.pdf)
   
 5. Extracted information includes:
    
@@ -81,27 +84,26 @@ The JSON file location can be customized by changing the filename parameter in t
    - Time (in minutes and seconds).
    - Period (handles regular periods as integers and "E" for overtime).
     
-5. The results are printed to the console and saved to a JSON file.
+6. The results are printed to the console and saved to a JSON file.
 
 ## Example Input
 
 A typical message might look like this in hex:
 ```
-0x01 0x00 0x02 0x31 0x31 0x30 0x32 0x31 0x35 0x30 0x30 0x30 0x32 0x30 0x30 0x31 0x03
+0x01 0x7f 0x02 0x47 0x31 0x31 0x80 0x37 0x20 0x34 0x30 0x37 0x20 0x30 0x31 0x20 0x30 0x30 0x31 0x03 0x2d
+
 ```
 
-- 0x01: Start of message (SOH)
-- 0x02: Start of text (STX)
-- 0x31 0x31: Message type 11
-- 0x30 0x32: Minutes (02)
-- 0x31 0x35: Seconds (15)
-- 0x30 0x30 0x30: Home score (0)
-- 0x30 0x32 0x30: Guest score (20)
-- 0x31: Period (1)
-- 0x03: End of text (ETX)
+explanation to some of the messages: 
+- Start of Heading (SOH)  = 01 hexadecimal
+- Start of text (STX) = 02 hexadecimal
+- End of text (ETX) = 03 hexadecimal
+- after ETX an additional byte gets transmited. The
+  - Longitudinal Redundancy Check (LRC)
+
+All details about the structure of the messages can be found in the above linked manual from Bodet. 
 
 ## what's next
-- implement longitudinal redundancy check (LRC) check to check integrity of received messages
 - implement additional message types
    -  Message #12: Home team players penalty
    -  Message #13: Guest team players penalty
