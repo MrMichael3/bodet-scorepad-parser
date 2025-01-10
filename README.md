@@ -70,6 +70,11 @@ port = 4001       # Default port
 - JSON File Location:
 The JSON file location can be customized by changing the filename parameter in the `write_status_to_json` function.
 
+### Network Setup Example: 
+Below is an example network setup for this project.
+
+![Network Diagram](https://github.com/christoph-ernst/bodet-scorepad-parser/blob/main/graphics/network-example.png)
+
 # How It Works
 1. The script listens for TCP connections and receives data in chunks.
 2. Messages are parsed according to predefined markers and structure.
