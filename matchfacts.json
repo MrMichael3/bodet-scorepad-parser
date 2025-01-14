@@ -1,6 +1,14 @@
 {
-    "score_home": 4,
-    "score_guest": 2,
-    "time": "03:20",
-    "period": 2
+    "score_home": 2,
+    "score_guest": 0,
+    "time": "01:30",
+    "period": 2,
+    "homeplayer1_penalty-on": 128,
+    "homeplayer1_penalty_time": "00:00",
+    "homeplayer2_penalty-on": 128,
+    "homeplayer2_penalty_time": "00:00",
+    "guestplayer1_penalty-on": 129,
+    "guestplayer1_penalty_time": "01:18",
+    "guestplayer2_penalty-on": 128,
+    "guestplayer2_penalty_time": "00:00"
 }
