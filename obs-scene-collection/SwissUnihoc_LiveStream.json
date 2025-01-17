@@ -61,8 +61,8 @@
         "monitoring_type": 0,
         "private_settings": {}
     },
-    "current_scene": "_ScoreBoard",
-    "current_program_scene": "_ScoreBoard",
+    "current_scene": "LiveStream Out",
+    "current_program_scene": "LiveStream Out",
     "scene_order": [
         {
             "name": "LiveStream Out"
@@ -75,6 +75,12 @@
         },
         {
             "name": "_ScoreBoard"
+        },
+        {
+            "name": "_Penalties"
+        },
+        {
+            "name": "_strafe"
         }
     ],
     "name": "SwissUnihoc LiveStream",
@@ -105,7 +111,7 @@
     "transitions": [],
     "saved_projectors": [],
     "current_transition": "Fade",
-    "transition_duration": 300,
+    "transition_duration": 1000,
     "preview_locked": false,
     "scaling_enabled": false,
     "scaling_level": 0,
@@ -114,7 +120,753 @@
     "virtual-camera": {
         "type2": 3
     },
-    "modules": {},
+    "modules": {
+        "advanced-scene-switcher": {
+            "sceneGroups": [],
+            "macros": [
+                {
+                    "name": "act-penalty_home_p1",
+                    "group": false,
+                    "pauseSaveBehavior": 0,
+                    "pause": false,
+                    "parallel": false,
+                    "onChange": true,
+                    "skipExecOnStart": false,
+                    "stopActionsIfNotDone": false,
+                    "useShortCircuitEvaluation": false,
+                    "useCustomConditionCheckInterval": false,
+                    "customConditionCheckInterval": {
+                        "value": {
+                            "value": 0.29999999999999999,
+                            "type": 0
+                        },
+                        "unit": 0,
+                        "version": 1
+                    },
+                    "dockSettings": {
+                        "register": false,
+                        "hasRunButton": true,
+                        "hasPauseButton": true,
+                        "hasStatusLabel": false,
+                        "highlightIfConditionsTrue": false,
+                        "runButtonText": "Run",
+                        "pauseButtonText": "Pause",
+                        "unpauseButtonText": "Unpause",
+                        "conditionsTrueStatusText": "Conditions are true.",
+                        "conditionsFalseStatusText": "Conditions are false.",
+                        "dockId": "advss-macro-dock-9f268ff0-ec5a-43af-826f-7f3c973ac3c5",
+                        "version": 1
+                    },
+                    "macroActionConditionSplitterPosition": [
+                        {
+                            "pos": 272
+                        },
+                        {
+                            "pos": 272
+                        }
+                    ],
+                    "macroElseActionSplitterPosition": [
+                        {
+                            "pos": 240
+                        },
+                        {
+                            "pos": 0
+                        }
+                    ],
+                    "registerHotkeys": false,
+                    "pauseHotkey": [],
+                    "unpauseHotkey": [],
+                    "togglePauseHotkey": [],
+                    "conditions": [
+                        {
+                            "segmentSettings": {
+                                "collapsed": false,
+                                "useCustomLabel": false,
+                                "customLabel": "My label"
+                            },
+                            "id": "file",
+                            "logic": 0,
+                            "durationModifier": {
+                                "time_constraint": 0,
+                                "seconds": {
+                                    "value": {
+                                        "value": 0.0,
+                                        "type": 0
+                                    },
+                                    "unit": 0,
+                                    "version": 1
+                                }
+                            },
+                            "regexConfig": {
+                                "enable": true,
+                                "partial": true,
+                                "options": 0
+                            },
+                            "file": "/home/scotty/src/bodet-scorepad-parser/matchfacts.json",
+                            "text": "\"HPP1-active\"\\s*:\\s*(1)",
+                            "fileType": 0,
+                            "condition": 0,
+                            "useTime": false,
+                            "onlyMatchIfChanged": false
+                        }
+                    ],
+                    "actions": [
+                        {
+                            "segmentSettings": {
+                                "collapsed": false,
+                                "useCustomLabel": false,
+                                "customLabel": "My label"
+                            },
+                            "id": "scene_visibility",
+                            "enabled": true,
+                            "sceneSelection": {
+                                "type": 0,
+                                "name": "_Penalties"
+                            },
+                            "sceneItemSelection": {
+                                "type": 0,
+                                "idxType": 0,
+                                "idx": 0,
+                                "item": "HPP1_time"
+                            },
+                            "action": 0
+                        },
+                        {
+                            "segmentSettings": {
+                                "collapsed": false,
+                                "useCustomLabel": false,
+                                "customLabel": "My label"
+                            },
+                            "id": "scene_visibility",
+                            "enabled": true,
+                            "sceneSelection": {
+                                "type": 0,
+                                "name": "_Penalties"
+                            },
+                            "sceneItemSelection": {
+                                "type": 0,
+                                "idxType": 0,
+                                "idx": 0,
+                                "item": "HPP1_field"
+                            },
+                            "action": 0
+                        },
+                        {
+                            "segmentSettings": {
+                                "collapsed": false,
+                                "useCustomLabel": false,
+                                "customLabel": "My label"
+                            },
+                            "id": "scene_visibility",
+                            "enabled": true,
+                            "sceneSelection": {
+                                "type": 0,
+                                "name": "_Penalties"
+                            },
+                            "sceneItemSelection": {
+                                "type": 0,
+                                "idxType": 0,
+                                "idx": 0,
+                                "item": "HPP1_time"
+                            },
+                            "action": 0
+                        }
+                    ],
+                    "elseActions": [],
+                    "inputVariables": []
+                },
+                {
+                    "name": "act-penalty_guest_p1",
+                    "group": false,
+                    "pauseSaveBehavior": 0,
+                    "pause": false,
+                    "parallel": false,
+                    "onChange": true,
+                    "skipExecOnStart": false,
+                    "stopActionsIfNotDone": false,
+                    "useShortCircuitEvaluation": false,
+                    "useCustomConditionCheckInterval": false,
+                    "customConditionCheckInterval": {
+                        "value": {
+                            "value": 0.29999999999999999,
+                            "type": 0
+                        },
+                        "unit": 0,
+                        "version": 1
+                    },
+                    "dockSettings": {
+                        "register": false,
+                        "hasRunButton": true,
+                        "hasPauseButton": true,
+                        "hasStatusLabel": false,
+                        "highlightIfConditionsTrue": false,
+                        "runButtonText": "Run",
+                        "pauseButtonText": "Pause",
+                        "unpauseButtonText": "Unpause",
+                        "conditionsTrueStatusText": "Conditions are true.",
+                        "conditionsFalseStatusText": "Conditions are false.",
+                        "dockId": "advss-macro-dock-b32abcc1-af8e-46e7-a276-2795307dea7d",
+                        "version": 1
+                    },
+                    "macroActionConditionSplitterPosition": [
+                        {
+                            "pos": 272
+                        },
+                        {
+                            "pos": 272
+                        }
+                    ],
+                    "macroElseActionSplitterPosition": [
+                        {
+                            "pos": 240
+                        },
+                        {
+                            "pos": 0
+                        }
+                    ],
+                    "registerHotkeys": false,
+                    "pauseHotkey": [],
+                    "unpauseHotkey": [],
+                    "togglePauseHotkey": [],
+                    "conditions": [
+                        {
+                            "segmentSettings": {
+                                "collapsed": false,
+                                "useCustomLabel": false,
+                                "customLabel": "My label"
+                            },
+                            "id": "file",
+                            "logic": 0,
+                            "durationModifier": {
+                                "time_constraint": 0,
+                                "seconds": {
+                                    "value": {
+                                        "value": 0.0,
+                                        "type": 0
+                                    },
+                                    "unit": 0,
+                                    "version": 1
+                                }
+                            },
+                            "regexConfig": {
+                                "enable": true,
+                                "partial": true,
+                                "options": 0
+                            },
+                            "file": "/home/scotty/src/bodet-scorepad-parser/matchfacts.json",
+                            "text": "\"GPP1-active\"\\s*:\\s*(1)",
+                            "fileType": 0,
+                            "condition": 0,
+                            "useTime": false,
+                            "onlyMatchIfChanged": false
+                        }
+                    ],
+                    "actions": [
+                        {
+                            "segmentSettings": {
+                                "collapsed": false,
+                                "useCustomLabel": false,
+                                "customLabel": "My label"
+                            },
+                            "id": "scene_visibility",
+                            "enabled": true,
+                            "sceneSelection": {
+                                "type": 0,
+                                "name": "_Penalties"
+                            },
+                            "sceneItemSelection": {
+                                "type": 0,
+                                "idxType": 0,
+                                "idx": 0,
+                                "item": "GPP1_time"
+                            },
+                            "action": 0
+                        },
+                        {
+                            "segmentSettings": {
+                                "collapsed": false,
+                                "useCustomLabel": false,
+                                "customLabel": "My label"
+                            },
+                            "id": "scene_visibility",
+                            "enabled": true,
+                            "sceneSelection": {
+                                "type": 0,
+                                "name": "_Penalties"
+                            },
+                            "sceneItemSelection": {
+                                "type": 0,
+                                "idxType": 0,
+                                "idx": 0,
+                                "item": "GPP1_field"
+                            },
+                            "action": 0
+                        },
+                        {
+                            "segmentSettings": {
+                                "collapsed": false,
+                                "useCustomLabel": false,
+                                "customLabel": "My label"
+                            },
+                            "id": "scene_visibility",
+                            "enabled": true,
+                            "sceneSelection": {
+                                "type": 0,
+                                "name": "_Penalties"
+                            },
+                            "sceneItemSelection": {
+                                "type": 0,
+                                "idxType": 0,
+                                "idx": 0,
+                                "item": "GPP1_time"
+                            },
+                            "action": 0
+                        }
+                    ],
+                    "elseActions": [],
+                    "inputVariables": []
+                },
+                {
+                    "name": "deact-penalty_home_p1",
+                    "group": false,
+                    "pauseSaveBehavior": 0,
+                    "pause": false,
+                    "parallel": false,
+                    "onChange": true,
+                    "skipExecOnStart": false,
+                    "stopActionsIfNotDone": false,
+                    "useShortCircuitEvaluation": false,
+                    "useCustomConditionCheckInterval": false,
+                    "customConditionCheckInterval": {
+                        "value": {
+                            "value": 0.29999999999999999,
+                            "type": 0
+                        },
+                        "unit": 0,
+                        "version": 1
+                    },
+                    "dockSettings": {
+                        "register": false,
+                        "hasRunButton": true,
+                        "hasPauseButton": true,
+                        "hasStatusLabel": false,
+                        "highlightIfConditionsTrue": false,
+                        "runButtonText": "Run",
+                        "pauseButtonText": "Pause",
+                        "unpauseButtonText": "Unpause",
+                        "conditionsTrueStatusText": "Conditions are true.",
+                        "conditionsFalseStatusText": "Conditions are false.",
+                        "dockId": "advss-macro-dock-878c75a8-6c29-48a4-8da1-0740022671f8",
+                        "version": 1
+                    },
+                    "macroActionConditionSplitterPosition": [
+                        {
+                            "pos": 272
+                        },
+                        {
+                            "pos": 272
+                        }
+                    ],
+                    "macroElseActionSplitterPosition": [
+                        {
+                            "pos": 240
+                        },
+                        {
+                            "pos": 0
+                        }
+                    ],
+                    "registerHotkeys": false,
+                    "pauseHotkey": [],
+                    "unpauseHotkey": [],
+                    "togglePauseHotkey": [],
+                    "conditions": [
+                        {
+                            "segmentSettings": {
+                                "collapsed": false,
+                                "useCustomLabel": false,
+                                "customLabel": "My label"
+                            },
+                            "id": "file",
+                            "logic": 0,
+                            "durationModifier": {
+                                "time_constraint": 0,
+                                "seconds": {
+                                    "value": {
+                                        "value": 0.0,
+                                        "type": 0
+                                    },
+                                    "unit": 0,
+                                    "version": 1
+                                }
+                            },
+                            "regexConfig": {
+                                "enable": true,
+                                "partial": true,
+                                "options": 0
+                            },
+                            "file": "/home/scotty/src/bodet-scorepad-parser/matchfacts.json",
+                            "text": "\"HPP1-active\"\\s*:\\s*(0)",
+                            "fileType": 0,
+                            "condition": 0,
+                            "useTime": false,
+                            "onlyMatchIfChanged": false
+                        }
+                    ],
+                    "actions": [
+                        {
+                            "segmentSettings": {
+                                "collapsed": false,
+                                "useCustomLabel": false,
+                                "customLabel": "My label"
+                            },
+                            "id": "scene_visibility",
+                            "enabled": true,
+                            "sceneSelection": {
+                                "type": 0,
+                                "name": "_Penalties"
+                            },
+                            "sceneItemSelection": {
+                                "type": 0,
+                                "idxType": 0,
+                                "idx": 0,
+                                "item": "HPP1_time"
+                            },
+                            "action": 1
+                        },
+                        {
+                            "segmentSettings": {
+                                "collapsed": false,
+                                "useCustomLabel": false,
+                                "customLabel": "My label"
+                            },
+                            "id": "scene_visibility",
+                            "enabled": true,
+                            "sceneSelection": {
+                                "type": 0,
+                                "name": "_Penalties"
+                            },
+                            "sceneItemSelection": {
+                                "type": 0,
+                                "idxType": 0,
+                                "idx": 0,
+                                "item": "HPP1_field"
+                            },
+                            "action": 1
+                        }
+                    ],
+                    "elseActions": [],
+                    "inputVariables": []
+                },
+                {
+                    "name": "deact-penalty_guest_p1",
+                    "group": false,
+                    "pauseSaveBehavior": 0,
+                    "pause": false,
+                    "parallel": false,
+                    "onChange": true,
+                    "skipExecOnStart": false,
+                    "stopActionsIfNotDone": false,
+                    "useShortCircuitEvaluation": false,
+                    "useCustomConditionCheckInterval": false,
+                    "customConditionCheckInterval": {
+                        "value": {
+                            "value": 0.29999999999999999,
+                            "type": 0
+                        },
+                        "unit": 0,
+                        "version": 1
+                    },
+                    "dockSettings": {
+                        "register": false,
+                        "hasRunButton": true,
+                        "hasPauseButton": true,
+                        "hasStatusLabel": false,
+                        "highlightIfConditionsTrue": false,
+                        "runButtonText": "Run",
+                        "pauseButtonText": "Pause",
+                        "unpauseButtonText": "Unpause",
+                        "conditionsTrueStatusText": "Conditions are true.",
+                        "conditionsFalseStatusText": "Conditions are false.",
+                        "dockId": "advss-macro-dock-030b77d5-297e-4b88-a54e-ef79dde83e04",
+                        "version": 1
+                    },
+                    "macroActionConditionSplitterPosition": [
+                        {
+                            "pos": 272
+                        },
+                        {
+                            "pos": 272
+                        }
+                    ],
+                    "macroElseActionSplitterPosition": [
+                        {
+                            "pos": 240
+                        },
+                        {
+                            "pos": 0
+                        }
+                    ],
+                    "registerHotkeys": false,
+                    "pauseHotkey": [],
+                    "unpauseHotkey": [],
+                    "togglePauseHotkey": [],
+                    "conditions": [
+                        {
+                            "segmentSettings": {
+                                "collapsed": false,
+                                "useCustomLabel": false,
+                                "customLabel": "My label"
+                            },
+                            "id": "file",
+                            "logic": 0,
+                            "durationModifier": {
+                                "time_constraint": 0,
+                                "seconds": {
+                                    "value": {
+                                        "value": 0.0,
+                                        "type": 0
+                                    },
+                                    "unit": 0,
+                                    "version": 1
+                                }
+                            },
+                            "regexConfig": {
+                                "enable": true,
+                                "partial": true,
+                                "options": 0
+                            },
+                            "file": "/home/scotty/src/bodet-scorepad-parser/matchfacts.json",
+                            "text": "\"GPP1-active\"\\s*:\\s*(0)",
+                            "fileType": 0,
+                            "condition": 0,
+                            "useTime": false,
+                            "onlyMatchIfChanged": false
+                        }
+                    ],
+                    "actions": [
+                        {
+                            "segmentSettings": {
+                                "collapsed": false,
+                                "useCustomLabel": false,
+                                "customLabel": "My label"
+                            },
+                            "id": "scene_visibility",
+                            "enabled": true,
+                            "sceneSelection": {
+                                "type": 0,
+                                "name": "_Penalties"
+                            },
+                            "sceneItemSelection": {
+                                "type": 0,
+                                "idxType": 0,
+                                "idx": 0,
+                                "item": "GPP1_time"
+                            },
+                            "action": 1
+                        },
+                        {
+                            "segmentSettings": {
+                                "collapsed": false,
+                                "useCustomLabel": false,
+                                "customLabel": "My label"
+                            },
+                            "id": "scene_visibility",
+                            "enabled": true,
+                            "sceneSelection": {
+                                "type": 0,
+                                "name": "_Penalties"
+                            },
+                            "sceneItemSelection": {
+                                "type": 0,
+                                "idxType": 0,
+                                "idx": 0,
+                                "item": "GPP1_field"
+                            },
+                            "action": 1
+                        }
+                    ],
+                    "elseActions": [],
+                    "inputVariables": []
+                }
+            ],
+            "macroSettings": {
+                "highlightExecuted": false,
+                "highlightConditions": false,
+                "highlightActions": false,
+                "newMacroRegisterHotkey": false,
+                "newMacroUseShortCircuitEvaluation": false,
+                "saveSettingsOnMacroChange": true
+            },
+            "variables": [],
+            "switches": [],
+            "ignoreWindows": [],
+            "screenRegion": [],
+            "pauseEntries": [],
+            "sceneRoundTrip": [],
+            "sceneTransitions": [],
+            "defaultTransitions": [],
+            "defTransitionDelay": 0,
+            "ignoreIdleWindows": [],
+            "idleTargetType": 0,
+            "idleSceneName": "",
+            "idleTransitionName": "",
+            "idleEnable": false,
+            "idleTime": 60,
+            "executableSwitches": [],
+            "randomSwitches": [],
+            "fileSwitches": [],
+            "readEnabled": false,
+            "readPath": "",
+            "writeEnabled": false,
+            "writePath": "",
+            "mediaSwitches": [],
+            "timeSwitches": [],
+            "audioSwitches": [],
+            "audioFallbackTargetType": 0,
+            "audioFallbackScene": "",
+            "audioFallbackTransition": "",
+            "audioFallbackEnable": false,
+            "audioFallbackDuration": {
+                "value": {
+                    "value": 0.0,
+                    "type": 0
+                },
+                "unit": 0,
+                "version": 1
+            },
+            "videoSwitches": [],
+            "interval": 1000,
+            "non_matching_scene": "",
+            "switch_if_not_matching": 0,
+            "noMatchDelay": {
+                "value": {
+                    "value": 0.0,
+                    "type": 0
+                },
+                "unit": 0,
+                "version": 1
+            },
+            "cooldown": {
+                "value": {
+                    "value": 0.0,
+                    "type": 0
+                },
+                "unit": 0,
+                "version": 1
+            },
+            "enableCooldown": false,
+            "active": true,
+            "startup_behavior": 0,
+            "autoStartEvent": 0,
+            "logLevel": 0,
+            "logLevelVersion": 1,
+            "showSystemTrayNotifications": false,
+            "disableHints": false,
+            "disableFilterComboboxFilter": false,
+            "warnPluginLoadFailure": true,
+            "hideLegacyTabs": true,
+            "priority0": 10,
+            "priority1": 0,
+            "priority2": 2,
+            "priority3": 8,
+            "priority4": 6,
+            "priority5": 9,
+            "priority6": 7,
+            "priority7": 4,
+            "priority8": 1,
+            "priority9": 5,
+            "priority10": 3,
+            "threadPriority": 3,
+            "transitionOverrideOverride": false,
+            "adjustActiveTransitionType": true,
+            "lastImportPath": "",
+            "startHotkey": [],
+            "stopHotkey": [],
+            "toggleHotkey": [],
+            "upMacroSegmentHotkey": [],
+            "downMacroSegmentHotkey": [],
+            "removeMacroSegmentHotkey": [],
+            "tabWidgetOrder": [
+                {
+                    "generalTab": 0
+                },
+                {
+                    "macroTab": 1
+                },
+                {
+                    "windowTitleTab": 2
+                },
+                {
+                    "executableTab": 3
+                },
+                {
+                    "screenRegionTab": 4
+                },
+                {
+                    "mediaTab": 5
+                },
+                {
+                    "fileTab": 6
+                },
+                {
+                    "randomTab": 7
+                },
+                {
+                    "timeTab": 8
+                },
+                {
+                    "idleTab": 9
+                },
+                {
+                    "sceneSequenceTab": 10
+                },
+                {
+                    "audioTab": 11
+                },
+                {
+                    "videoTab": 12
+                },
+                {
+                    "sceneGroupTab": 13
+                },
+                {
+                    "transitionsTab": 14
+                },
+                {
+                    "pauseTab": 15
+                },
+                {
+                    "websocketConnectionTab": 16
+                },
+                {
+                    "twitchConnectionTab": 17
+                },
+                {
+                    "variableTab": 18
+                },
+                {
+                    "actionQueueTab": 19
+                }
+            ],
+            "saveWindowGeo": false,
+            "windowPosX": 218,
+            "windowPosY": 326,
+            "windowWidth": 1139,
+            "windowHeight": 745,
+            "macroListMacroEditSplitterPosition": [
+                {
+                    "pos": 301
+                },
+                {
+                    "pos": 812
+                }
+            ],
+            "version": "db50822b0518ed224d17b9537aef029c00188e43",
+            "websocketConnections": [],
+            "twitchConnections": [],
+            "actionQueues": []
+        }
+    },
     "resolution": {
         "x": 1920,
         "y": 1080
@@ -138,7 +890,7 @@
             "mixers": 255,
             "sync": 0,
             "flags": 0,
-            "volume": 1.0,
+            "volume": 0.47225913405418396,
             "balance": 0.5,
             "enabled": true,
             "muted": false,
@@ -156,6 +908,66 @@
                 "MediaSource.Pause": [],
                 "MediaSource.Stop": []
             },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 520093696,
+            "name": "GPP1_field",
+            "uuid": "3dd488e8-617a-4de2-8876-3656017114fe",
+            "id": "image_source",
+            "versioned_id": "image_source",
+            "settings": {
+                "file": "/home/scotty/src/bodet-scorepad-parser/graphics/penalty.png"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 520093696,
+            "name": "GPP1_time",
+            "uuid": "00b22e74-b8b5-4122-ac1c-aeed06106c2d",
+            "id": "text_ft2_source",
+            "versioned_id": "text_ft2_source_v2",
+            "settings": {
+                "text": "00:00",
+                "font": {
+                    "face": "Sans Serif",
+                    "style": "",
+                    "size": 48,
+                    "flags": 0
+                },
+                "color1": 4294967295,
+                "color2": 4294967295
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
             "deinterlace_mode": 0,
             "deinterlace_field_order": 0,
             "monitoring_type": 0,
@@ -391,12 +1203,98 @@
         },
         {
             "prev_ver": 520093696,
+            "name": "HPP1_field",
+            "uuid": "591a28a6-0be7-41db-8cd2-75fcb4f8bd13",
+            "id": "image_source",
+            "versioned_id": "image_source",
+            "settings": {
+                "file": "/home/scotty/src/bodet-scorepad-parser/graphics/penalty.png"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 520093696,
+            "name": "HPP1_time",
+            "uuid": "b65af0e4-e9b5-4ada-969c-13162a05a09b",
+            "id": "text_ft2_source",
+            "versioned_id": "text_ft2_source_v2",
+            "settings": {
+                "font": {
+                    "face": "Sans Serif",
+                    "style": "",
+                    "size": 48,
+                    "flags": 0
+                },
+                "color1": 4294967295,
+                "color2": 4294967295,
+                "text": "00:00"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 520093696,
+            "name": "Image",
+            "uuid": "4a71bf5f-19ef-4e78-9e43-a17dbe0fe7a7",
+            "id": "image_source",
+            "versioned_id": "image_source",
+            "settings": {
+                "file": "/home/scotty/Downloads/klok.png"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 520093696,
             "name": "LiveStream Out",
             "uuid": "e147a7cd-7e7f-4014-9043-20e43d0e7e0e",
             "id": "scene",
             "versioned_id": "scene",
             "settings": {
-                "id_counter": 2,
+                "id_counter": 3,
                 "custom_size": false,
                 "items": [
                     {
@@ -418,6 +1316,61 @@
                         "crop_right": 0,
                         "crop_bottom": 0,
                         "id": 1,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "pos_rel": {
+                            "x": -1.7777777910232544,
+                            "y": -1.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "_Penalties",
+                        "source_uuid": "44bdb806-3308-4bf2-be98-05751af8f35c",
+                        "visible": true,
+                        "locked": true,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 3,
                         "group_item_backup": false,
                         "pos": {
                             "x": 0.0,
@@ -527,7 +1480,9 @@
                 "libobs.show_scene_item.1": [],
                 "libobs.hide_scene_item.1": [],
                 "libobs.show_scene_item.2": [],
-                "libobs.hide_scene_item.2": []
+                "libobs.hide_scene_item.2": [],
+                "libobs.show_scene_item.3": [],
+                "libobs.hide_scene_item.3": []
             },
             "deinterlace_mode": 0,
             "deinterlace_field_order": 0,
@@ -567,7 +1522,7 @@
             "id": "text_ft2_source",
             "versioned_id": "text_ft2_source_v2",
             "settings": {
-                "text": "03:20",
+                "text": "07:18",
                 "color1": 4284663257,
                 "color2": 4284663257
             },
@@ -586,139 +1541,7 @@
             "deinterlace_mode": 0,
             "deinterlace_field_order": 0,
             "monitoring_type": 0,
-            "private_settings": {},
-            "filters": [
-                {
-                    "prev_ver": 520093696,
-                    "name": "Render Delay",
-                    "uuid": "df3ed8a5-cd5f-41ac-9024-3d6be281ff6f",
-                    "id": "gpu_delay",
-                    "versioned_id": "gpu_delay",
-                    "settings": {
-                        "delay_ms": 500
-                    },
-                    "mixers": 0,
-                    "sync": 0,
-                    "flags": 0,
-                    "volume": 1.0,
-                    "balance": 0.5,
-                    "enabled": true,
-                    "muted": false,
-                    "push-to-mute": false,
-                    "push-to-mute-delay": 0,
-                    "push-to-talk": false,
-                    "push-to-talk-delay": 0,
-                    "hotkeys": {},
-                    "deinterlace_mode": 0,
-                    "deinterlace_field_order": 0,
-                    "monitoring_type": 0,
-                    "private_settings": {}
-                },
-                {
-                    "prev_ver": 520093696,
-                    "name": "Render Delay 2",
-                    "uuid": "bc0a03fd-8110-4d37-a6b6-a01cae991780",
-                    "id": "gpu_delay",
-                    "versioned_id": "gpu_delay",
-                    "settings": {
-                        "delay_ms": 500
-                    },
-                    "mixers": 0,
-                    "sync": 0,
-                    "flags": 0,
-                    "volume": 1.0,
-                    "balance": 0.5,
-                    "enabled": true,
-                    "muted": false,
-                    "push-to-mute": false,
-                    "push-to-mute-delay": 0,
-                    "push-to-talk": false,
-                    "push-to-talk-delay": 0,
-                    "hotkeys": {},
-                    "deinterlace_mode": 0,
-                    "deinterlace_field_order": 0,
-                    "monitoring_type": 0,
-                    "private_settings": {}
-                },
-                {
-                    "prev_ver": 520093696,
-                    "name": "Render Delay 3",
-                    "uuid": "02d9d391-d78d-4643-a8bf-83ee00d43e71",
-                    "id": "gpu_delay",
-                    "versioned_id": "gpu_delay",
-                    "settings": {
-                        "delay_ms": 500
-                    },
-                    "mixers": 0,
-                    "sync": 0,
-                    "flags": 0,
-                    "volume": 1.0,
-                    "balance": 0.5,
-                    "enabled": true,
-                    "muted": false,
-                    "push-to-mute": false,
-                    "push-to-mute-delay": 0,
-                    "push-to-talk": false,
-                    "push-to-talk-delay": 0,
-                    "hotkeys": {},
-                    "deinterlace_mode": 0,
-                    "deinterlace_field_order": 0,
-                    "monitoring_type": 0,
-                    "private_settings": {}
-                },
-                {
-                    "prev_ver": 520093696,
-                    "name": "Render Delay 4",
-                    "uuid": "d584001c-f562-41a9-9ac8-08f8b26479a8",
-                    "id": "gpu_delay",
-                    "versioned_id": "gpu_delay",
-                    "settings": {
-                        "delay_ms": 500
-                    },
-                    "mixers": 0,
-                    "sync": 0,
-                    "flags": 0,
-                    "volume": 1.0,
-                    "balance": 0.5,
-                    "enabled": true,
-                    "muted": false,
-                    "push-to-mute": false,
-                    "push-to-mute-delay": 0,
-                    "push-to-talk": false,
-                    "push-to-talk-delay": 0,
-                    "hotkeys": {},
-                    "deinterlace_mode": 0,
-                    "deinterlace_field_order": 0,
-                    "monitoring_type": 0,
-                    "private_settings": {}
-                },
-                {
-                    "prev_ver": 520093696,
-                    "name": "Render Delay 5",
-                    "uuid": "6564c66d-e48b-43d5-ae01-694ee1cfce9c",
-                    "id": "gpu_delay",
-                    "versioned_id": "gpu_delay",
-                    "settings": {
-                        "delay_ms": 500
-                    },
-                    "mixers": 0,
-                    "sync": 0,
-                    "flags": 0,
-                    "volume": 1.0,
-                    "balance": 0.5,
-                    "enabled": true,
-                    "muted": false,
-                    "push-to-mute": false,
-                    "push-to-mute-delay": 0,
-                    "push-to-talk": false,
-                    "push-to-talk-delay": 0,
-                    "hotkeys": {},
-                    "deinterlace_mode": 0,
-                    "deinterlace_field_order": 0,
-                    "monitoring_type": 0,
-                    "private_settings": {}
-                }
-            ]
+            "private_settings": {}
         },
         {
             "prev_ver": 520093696,
@@ -761,7 +1584,7 @@
             "id": "text_ft2_source",
             "versioned_id": "text_ft2_source_v2",
             "settings": {
-                "text": "2",
+                "text": "0",
                 "color1": 4294967295,
                 "color2": 4294967295
             },
@@ -789,9 +1612,65 @@
             "id": "text_ft2_source",
             "versioned_id": "text_ft2_source_v2",
             "settings": {
-                "text": "4",
+                "text": "2",
                 "color1": 4294967295,
                 "color2": 4294967295
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 520093696,
+            "name": "URLSource_GPP1_time",
+            "uuid": "7dcfa069-7177-44c1-b6cd-90408c4c69ce",
+            "id": "url_source",
+            "versioned_id": "url_source",
+            "settings": {
+                "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\"=\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"\",\"output_json_pointer\":\"/Penalties/GuestTeam/Player1/GPP1-Time\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"URLSource_HPP1_time 2\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
+                "url": "/home/scotty/src/bodet-scorepad-parser/matchfacts.json",
+                "output_mapping_data": "[{\"css_props\":\"background-color: transparent;\\ncolor: #FFFFFF;\\nfont-size: 48px;\",\"file_path\":\"\",\"name\":\"output\",\"output_source\":\"GPP1_time\",\"template_string\":\"{{output}}\",\"unhide_output_source\":false}]"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 520093696,
+            "name": "URLSource_HPP1_time",
+            "uuid": "d00e04d5-dda2-4255-a53c-d5bf49b7276d",
+            "id": "url_source",
+            "versioned_id": "url_source",
+            "settings": {
+                "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\"=\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"\",\"output_json_pointer\":\"/Penalties/HomeTeam/Player1/HPP1-Time\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"URLSource_HPP1_time\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
+                "url": "/home/scotty/src/bodet-scorepad-parser/matchfacts.json",
+                "output_mapping_data": "[{\"css_props\":\"background-color: transparent;\\ncolor: #FFFFFF;\\nfont-size: 48px;\",\"file_path\":\"\",\"name\":\"output\",\"output_source\":\"HPP1_time\",\"template_string\":\"{{output}}\",\"unhide_output_source\":false}]"
             },
             "mixers": 0,
             "sync": 0,
@@ -817,7 +1696,7 @@
             "id": "url_source",
             "versioned_id": "url_source",
             "settings": {
-                "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\"=\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"$.time\",\"output_json_pointer\":\"\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"URLSource_matchtime\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
+                "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\"=\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"\",\"output_json_pointer\":\"/MatchClock/time\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"URLSource_matchtime\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
                 "url": "/home/scotty/src/bodet-scorepad-parser/matchfacts.json",
                 "output_mapping_data": "[{\"css_props\":\"background-color: transparent;\\ncolor: #FFFFFF;\\nfont-size: 48px;\",\"file_path\":\"\",\"name\":\"matchtime\",\"output_source\":\"txt_matchtime\",\"template_string\":\"{{output}}\",\"unhide_output_source\":false}]",
                 "update_timer": 100
@@ -846,7 +1725,7 @@
             "id": "url_source",
             "versioned_id": "url_source",
             "settings": {
-                "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\"=\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"$.period\",\"output_json_pointer\":\"\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"URLSource_period\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
+                "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\"=\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"\",\"output_json_pointer\":\"/MatchClock/period\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"URLSource_period\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
                 "url": "/home/scotty/src/bodet-scorepad-parser/matchfacts.json",
                 "output_mapping_data": "[{\"css_props\":\"background-color: transparent;\\ncolor: #FFFFFF;\\nfont-size: 48px;\",\"file_path\":\"\",\"name\":\"period\",\"output_source\":\"txt_period\",\"template_string\":\"{{output}}\",\"unhide_output_source\":false}]"
             },
@@ -874,7 +1753,7 @@
             "id": "url_source",
             "versioned_id": "url_source",
             "settings": {
-                "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\"=\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"$.score_guest\",\"output_json_pointer\":\"\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"URLSource_score_guest\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
+                "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\"=\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"\",\"output_json_pointer\":\"/score/guest\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"URLSource_score_guest\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
                 "url": "/home/scotty/src/bodet-scorepad-parser/matchfacts.json",
                 "output_mapping_data": "[{\"css_props\":\"background-color: transparent;\\ncolor: #FFFFFF;\\nfont-size: 48px;\",\"file_path\":\"\",\"name\":\"score_guest\",\"output_source\":\"txt_score_guest\",\"template_string\":\"{{output}}\",\"unhide_output_source\":false}]"
             },
@@ -902,7 +1781,7 @@
             "id": "url_source",
             "versioned_id": "url_source",
             "settings": {
-                "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\"=\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"$.score_home\",\"output_json_pointer\":\"\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"URLSource_score_home\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
+                "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\"=\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"\",\"output_json_pointer\":\"/score/home\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"URLSource_score_home\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
                 "url": "/home/scotty/src/bodet-scorepad-parser/matchfacts.json",
                 "output_mapping_data": "[{\"css_props\":\"background-color: transparent;\\ncolor: #FFFFFF;\\nfont-size: 48px;\\n\",\"file_path\":\"\",\"name\":\"score_home\",\"output_source\":\"txt_score_home\",\"template_string\":\"{{output}}\",\"unhide_output_source\":false}]"
             },
@@ -1005,6 +1884,379 @@
                 "OBSBasic.SelectScene": [],
                 "libobs.show_scene_item.5": [],
                 "libobs.hide_scene_item.5": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 520093696,
+            "name": "_Penalties",
+            "uuid": "44bdb806-3308-4bf2-be98-05751af8f35c",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "id_counter": 8,
+                "custom_size": false,
+                "items": [
+                    {
+                        "name": "HPP1_field",
+                        "source_uuid": "591a28a6-0be7-41db-8cd2-75fcb4f8bd13",
+                        "visible": false,
+                        "locked": true,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 2,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 740.0,
+                            "y": 85.0
+                        },
+                        "pos_rel": {
+                            "x": -0.40740740299224854,
+                            "y": -0.84259259700775146
+                        },
+                        "scale": {
+                            "x": 0.5829959511756897,
+                            "y": 0.58441555500030518
+                        },
+                        "scale_rel": {
+                            "x": 0.5829959511756897,
+                            "y": 0.58441555500030518
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "HPP1_time",
+                        "source_uuid": "b65af0e4-e9b5-4ada-969c-13162a05a09b",
+                        "visible": false,
+                        "locked": true,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 3,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 750.0,
+                            "y": 92.0
+                        },
+                        "pos_rel": {
+                            "x": -0.3888888955116272,
+                            "y": -0.82962965965270996
+                        },
+                        "scale": {
+                            "x": 0.59259259700775146,
+                            "y": 0.58333331346511841
+                        },
+                        "scale_rel": {
+                            "x": 0.59259259700775146,
+                            "y": 0.58333331346511841
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "URLSource_HPP1_time",
+                        "source_uuid": "d00e04d5-dda2-4255-a53c-d5bf49b7276d",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 5,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "pos_rel": {
+                            "x": -1.7777777910232544,
+                            "y": -1.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "GPP1_field",
+                        "source_uuid": "3dd488e8-617a-4de2-8876-3656017114fe",
+                        "visible": false,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 6,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 1086.0,
+                            "y": 85.0
+                        },
+                        "pos_rel": {
+                            "x": 0.23333333432674408,
+                            "y": -0.84259259700775146
+                        },
+                        "scale": {
+                            "x": 0.5829959511756897,
+                            "y": 0.58441555500030518
+                        },
+                        "scale_rel": {
+                            "x": 0.5829959511756897,
+                            "y": 0.58441555500030518
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "GPP1_time",
+                        "source_uuid": "00b22e74-b8b5-4122-ac1c-aeed06106c2d",
+                        "visible": false,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 7,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 1097.0,
+                            "y": 92.0
+                        },
+                        "pos_rel": {
+                            "x": 0.25370371341705322,
+                            "y": -0.82962965965270996
+                        },
+                        "scale": {
+                            "x": 0.59259259700775146,
+                            "y": 0.58333331346511841
+                        },
+                        "scale_rel": {
+                            "x": 0.59259259700775146,
+                            "y": 0.58333331346511841
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "URLSource_GPP1_time",
+                        "source_uuid": "7dcfa069-7177-44c1-b6cd-90408c4c69ce",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 8,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "pos_rel": {
+                            "x": -1.7777777910232544,
+                            "y": -1.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "scale_rel": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.2": [],
+                "libobs.hide_scene_item.2": [],
+                "libobs.show_scene_item.3": [],
+                "libobs.hide_scene_item.3": [],
+                "libobs.show_scene_item.5": [],
+                "libobs.hide_scene_item.5": [],
+                "libobs.show_scene_item.6": [],
+                "libobs.hide_scene_item.6": [],
+                "libobs.show_scene_item.7": [],
+                "libobs.hide_scene_item.7": [],
+                "libobs.show_scene_item.8": [],
+                "libobs.hide_scene_item.8": []
             },
             "deinterlace_mode": 0,
             "deinterlace_field_order": 0,
@@ -1777,6 +3029,94 @@
                 "libobs.hide_scene_item.29": [],
                 "libobs.show_scene_item.35": [],
                 "libobs.hide_scene_item.35": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 520093696,
+            "name": "_strafe",
+            "uuid": "a97182b6-3267-47c9-8ba9-c23433ce8222",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "id_counter": 1,
+                "custom_size": false,
+                "items": [
+                    {
+                        "name": "Image",
+                        "source_uuid": "4a71bf5f-19ef-4e78-9e43-a17dbe0fe7a7",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 1,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 985.0,
+                            "y": 655.0
+                        },
+                        "pos_rel": {
+                            "x": 0.046296294778585434,
+                            "y": 0.21296298503875732
+                        },
+                        "scale": {
+                            "x": -14.761904716491699,
+                            "y": -14.761904716491699
+                        },
+                        "scale_rel": {
+                            "x": -14.761904716491699,
+                            "y": -14.761904716491699
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "bounds_rel": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.1": [],
+                "libobs.hide_scene_item.1": []
             },
             "deinterlace_mode": 0,
             "deinterlace_field_order": 0,

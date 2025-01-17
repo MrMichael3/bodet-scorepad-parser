@@ -1,6 +1,32 @@
 {
-    "score_home": 4,
-    "score_guest": 2,
-    "time": "03:20",
-    "period": 2
+    "score": {
+        "home": 2,
+        "guest": 0
+    },
+    "MatchClock": {
+        "time": "07:18",
+        "period": 2
+    },
+    "Penalties": {
+        "HomeTeam": {
+            "Player1": {
+                "HPP1-active": 0,
+                "HPP1-Time": "00:00"
+            },
+            "Player2": {
+                "HPP2-active": 0,
+                "HPP2-Time": "00:00"
+            }
+        },
+        "GuestTeam": {
+            "Player1": {
+                "GPP1-active": 0,
+                "GPP1-Time": "00:00"
+            },
+            "Player2": {
+                "GPP2-active": 0,
+                "GPP2-Time": "00:00"
+            }
+        }
+    }
 }

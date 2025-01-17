@@ -138,7 +138,7 @@
             "mixers": 255,
             "sync": 0,
             "flags": 0,
-            "volume": 1.0,
+            "volume": 0.47225913405418396,
             "balance": 0.5,
             "enabled": true,
             "muted": false,
@@ -194,7 +194,9 @@
             "id": "text_ft2_source",
             "versioned_id": "text_ft2_source_v2",
             "settings": {
-                "text": "MAL"
+                "text": "MAL",
+                "color1": 4294967295,
+                "color2": 4294967295
             },
             "mixers": 0,
             "sync": 0,
@@ -340,7 +342,9 @@
                     "style": "",
                     "size": 256,
                     "flags": 0
-                }
+                },
+                "color1": 4294967295,
+                "color2": 4294967295
             },
             "mixers": 0,
             "sync": 0,
@@ -563,7 +567,9 @@
             "id": "text_ft2_source",
             "versioned_id": "text_ft2_source_v2",
             "settings": {
-                "text": "03:20"
+                "color1": 4284663257,
+                "color2": 4284663257,
+                "text": "05:47"
             },
             "mixers": 0,
             "sync": 0,
@@ -580,7 +586,139 @@
             "deinterlace_mode": 0,
             "deinterlace_field_order": 0,
             "monitoring_type": 0,
-            "private_settings": {}
+            "private_settings": {},
+            "filters": [
+                {
+                    "prev_ver": 520093696,
+                    "name": "Render Delay",
+                    "uuid": "df3ed8a5-cd5f-41ac-9024-3d6be281ff6f",
+                    "id": "gpu_delay",
+                    "versioned_id": "gpu_delay",
+                    "settings": {
+                        "delay_ms": 500
+                    },
+                    "mixers": 0,
+                    "sync": 0,
+                    "flags": 0,
+                    "volume": 1.0,
+                    "balance": 0.5,
+                    "enabled": true,
+                    "muted": false,
+                    "push-to-mute": false,
+                    "push-to-mute-delay": 0,
+                    "push-to-talk": false,
+                    "push-to-talk-delay": 0,
+                    "hotkeys": {},
+                    "deinterlace_mode": 0,
+                    "deinterlace_field_order": 0,
+                    "monitoring_type": 0,
+                    "private_settings": {}
+                },
+                {
+                    "prev_ver": 520093696,
+                    "name": "Render Delay 2",
+                    "uuid": "bc0a03fd-8110-4d37-a6b6-a01cae991780",
+                    "id": "gpu_delay",
+                    "versioned_id": "gpu_delay",
+                    "settings": {
+                        "delay_ms": 500
+                    },
+                    "mixers": 0,
+                    "sync": 0,
+                    "flags": 0,
+                    "volume": 1.0,
+                    "balance": 0.5,
+                    "enabled": true,
+                    "muted": false,
+                    "push-to-mute": false,
+                    "push-to-mute-delay": 0,
+                    "push-to-talk": false,
+                    "push-to-talk-delay": 0,
+                    "hotkeys": {},
+                    "deinterlace_mode": 0,
+                    "deinterlace_field_order": 0,
+                    "monitoring_type": 0,
+                    "private_settings": {}
+                },
+                {
+                    "prev_ver": 520093696,
+                    "name": "Render Delay 3",
+                    "uuid": "02d9d391-d78d-4643-a8bf-83ee00d43e71",
+                    "id": "gpu_delay",
+                    "versioned_id": "gpu_delay",
+                    "settings": {
+                        "delay_ms": 500
+                    },
+                    "mixers": 0,
+                    "sync": 0,
+                    "flags": 0,
+                    "volume": 1.0,
+                    "balance": 0.5,
+                    "enabled": true,
+                    "muted": false,
+                    "push-to-mute": false,
+                    "push-to-mute-delay": 0,
+                    "push-to-talk": false,
+                    "push-to-talk-delay": 0,
+                    "hotkeys": {},
+                    "deinterlace_mode": 0,
+                    "deinterlace_field_order": 0,
+                    "monitoring_type": 0,
+                    "private_settings": {}
+                },
+                {
+                    "prev_ver": 520093696,
+                    "name": "Render Delay 4",
+                    "uuid": "d584001c-f562-41a9-9ac8-08f8b26479a8",
+                    "id": "gpu_delay",
+                    "versioned_id": "gpu_delay",
+                    "settings": {
+                        "delay_ms": 500
+                    },
+                    "mixers": 0,
+                    "sync": 0,
+                    "flags": 0,
+                    "volume": 1.0,
+                    "balance": 0.5,
+                    "enabled": true,
+                    "muted": false,
+                    "push-to-mute": false,
+                    "push-to-mute-delay": 0,
+                    "push-to-talk": false,
+                    "push-to-talk-delay": 0,
+                    "hotkeys": {},
+                    "deinterlace_mode": 0,
+                    "deinterlace_field_order": 0,
+                    "monitoring_type": 0,
+                    "private_settings": {}
+                },
+                {
+                    "prev_ver": 520093696,
+                    "name": "Render Delay 5",
+                    "uuid": "6564c66d-e48b-43d5-ae01-694ee1cfce9c",
+                    "id": "gpu_delay",
+                    "versioned_id": "gpu_delay",
+                    "settings": {
+                        "delay_ms": 500
+                    },
+                    "mixers": 0,
+                    "sync": 0,
+                    "flags": 0,
+                    "volume": 1.0,
+                    "balance": 0.5,
+                    "enabled": true,
+                    "muted": false,
+                    "push-to-mute": false,
+                    "push-to-mute-delay": 0,
+                    "push-to-talk": false,
+                    "push-to-talk-delay": 0,
+                    "hotkeys": {},
+                    "deinterlace_mode": 0,
+                    "deinterlace_field_order": 0,
+                    "monitoring_type": 0,
+                    "private_settings": {}
+                }
+            ]
         },
         {
             "prev_ver": 520093696,
@@ -589,13 +727,15 @@
             "id": "text_ft2_source",
             "versioned_id": "text_ft2_source_v2",
             "settings": {
-                "text": "2",
                 "font": {
                     "face": "Sans Serif",
                     "style": "",
                     "size": 48,
                     "flags": 0
-                }
+                },
+                "color1": 4294967295,
+                "color2": 4294967295,
+                "text": "2"
             },
             "mixers": 0,
             "sync": 0,
@@ -621,7 +761,9 @@
             "id": "text_ft2_source",
             "versioned_id": "text_ft2_source_v2",
             "settings": {
-                "text": "2"
+                "color1": 4294967295,
+                "color2": 4294967295,
+                "text": "0"
             },
             "mixers": 0,
             "sync": 0,
@@ -647,7 +789,9 @@
             "id": "text_ft2_source",
             "versioned_id": "text_ft2_source_v2",
             "settings": {
-                "text": "4"
+                "color1": 4294967295,
+                "color2": 4294967295,
+                "text": "2"
             },
             "mixers": 0,
             "sync": 0,
@@ -673,7 +817,7 @@
             "id": "url_source",
             "versioned_id": "url_source",
             "settings": {
-                "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\"=\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"$.time\",\"output_json_pointer\":\"\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"URLSource_matchtime\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
+                "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\"=\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"\",\"output_json_pointer\":\"/MatchClock/time\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"URLSource_matchtime\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
                 "url": "/home/scotty/src/bodet-scorepad-parser/matchfacts.json",
                 "output_mapping_data": "[{\"css_props\":\"background-color: transparent;\\ncolor: #FFFFFF;\\nfont-size: 48px;\",\"file_path\":\"\",\"name\":\"matchtime\",\"output_source\":\"txt_matchtime\",\"template_string\":\"{{output}}\",\"unhide_output_source\":false}]",
                 "update_timer": 100
@@ -702,7 +846,7 @@
             "id": "url_source",
             "versioned_id": "url_source",
             "settings": {
-                "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\"=\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"$.period\",\"output_json_pointer\":\"\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"URLSource_period\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
+                "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\"=\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"\",\"output_json_pointer\":\"/MatchClock/period\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"URLSource_period\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
                 "url": "/home/scotty/src/bodet-scorepad-parser/matchfacts.json",
                 "output_mapping_data": "[{\"css_props\":\"background-color: transparent;\\ncolor: #FFFFFF;\\nfont-size: 48px;\",\"file_path\":\"\",\"name\":\"period\",\"output_source\":\"txt_period\",\"template_string\":\"{{output}}\",\"unhide_output_source\":false}]"
             },
@@ -730,7 +874,7 @@
             "id": "url_source",
             "versioned_id": "url_source",
             "settings": {
-                "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\"=\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"$.score_guest\",\"output_json_pointer\":\"\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"URLSource_score_guest\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
+                "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\"=\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"\",\"output_json_pointer\":\"/score/guest\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"URLSource_score_guest\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
                 "url": "/home/scotty/src/bodet-scorepad-parser/matchfacts.json",
                 "output_mapping_data": "[{\"css_props\":\"background-color: transparent;\\ncolor: #FFFFFF;\\nfont-size: 48px;\",\"file_path\":\"\",\"name\":\"score_guest\",\"output_source\":\"txt_score_guest\",\"template_string\":\"{{output}}\",\"unhide_output_source\":false}]"
             },
@@ -758,7 +902,7 @@
             "id": "url_source",
             "versioned_id": "url_source",
             "settings": {
-                "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\"=\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"$.score_home\",\"output_json_pointer\":\"\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"URLSource_score_home\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
+                "request_data": "{\"body\":\"\",\"fail_on_http_error\":false,\"headers\":null,\"inputs\":null,\"kv_delimiter\":\"=\",\"method\":\"GET\",\"output_cssselector\":\"\",\"output_json_path\":\"\",\"output_json_pointer\":\"/score/home\",\"output_regex\":\"\",\"output_regex_flags\":\"\",\"output_regex_group\":\"0\",\"output_type\":\"JSON\",\"output_xpath\":\"\",\"output_xquery\":\"\",\"post_process_regex\":\"\",\"post_process_regex_is_replace\":false,\"post_process_regex_replace\":\"\",\"source_name\":\"URLSource_score_home\",\"ssl_client_cert_file\":\"\",\"ssl_client_key_file\":\"\",\"ssl_client_key_pass\":\"\",\"url\":\"/home/scotty/src/bodet-scorepad-parser/matchfacts.json\",\"url_or_file\":\"file\"}",
                 "url": "/home/scotty/src/bodet-scorepad-parser/matchfacts.json",
                 "output_mapping_data": "[{\"css_props\":\"background-color: transparent;\\ncolor: #FFFFFF;\\nfont-size: 48px;\\n\",\"file_path\":\"\",\"name\":\"score_home\",\"output_source\":\"txt_score_home\",\"template_string\":\"{{output}}\",\"unhide_output_source\":false}]"
             },
@@ -1321,7 +1465,7 @@
                         "name": "txt_matchtime",
                         "source_uuid": "ebf39af0-0388-44a5-8e97-ff0674d6f9e1",
                         "visible": true,
-                        "locked": false,
+                        "locked": true,
                         "rot": 0.0,
                         "scale_ref": {
                             "x": 1920.0,
@@ -1617,20 +1761,20 @@
                 "libobs.hide_scene_item.24": [],
                 "libobs.show_scene_item.16": [],
                 "libobs.hide_scene_item.16": [],
-                "libobs.show_scene_item.28": [],
-                "libobs.hide_scene_item.28": [],
-                "libobs.show_scene_item.29": [],
-                "libobs.hide_scene_item.29": [],
                 "libobs.show_scene_item.30": [],
                 "libobs.hide_scene_item.30": [],
-                "libobs.show_scene_item.31": [],
-                "libobs.hide_scene_item.31": [],
                 "libobs.show_scene_item.32": [],
                 "libobs.hide_scene_item.32": [],
-                "libobs.show_scene_item.33": [],
-                "libobs.hide_scene_item.33": [],
+                "libobs.show_scene_item.28": [],
+                "libobs.hide_scene_item.28": [],
                 "libobs.show_scene_item.34": [],
                 "libobs.hide_scene_item.34": [],
+                "libobs.show_scene_item.31": [],
+                "libobs.hide_scene_item.31": [],
+                "libobs.show_scene_item.33": [],
+                "libobs.hide_scene_item.33": [],
+                "libobs.show_scene_item.29": [],
+                "libobs.hide_scene_item.29": [],
                 "libobs.show_scene_item.35": [],
                 "libobs.hide_scene_item.35": []
             },
