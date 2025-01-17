@@ -10,7 +10,7 @@ LRC_LENGTH = 1  # Length of LRC byte
 # File containing binary data
 FILE_PATH = 'all_messages_20250112_175610.bin'
 SERVER_ADDRESS = ('localhost', 4001)
-INTERVAL = 100     # Interval between sending messages (in milliseconds)
+INTERVAL = 500     # Interval between sending messages (in milliseconds)
                     # 1000 means 1 second / 100 means 0.1 sec
 
 def extract_messages_from_file(file_path):

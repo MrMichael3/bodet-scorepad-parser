@@ -66,6 +66,15 @@ def save_message_to_file(message):
             file.write(bytes(message))
 
 
+def determine_penalty_code(value):
+    # Returns:
+    #     int: Returns 0 if the value is 128 or smaller, and 1 if it is 129 or larger.
+    if value <= 128:
+        return 0
+    else:
+        return 1
+
+
 def process_message_by_type(message):
     global time
     global scorehome
@@ -120,7 +129,8 @@ def process_message_by_type(message):
 
     elif msg_type == (0x31, 0x32):  # Message type 12
         # print(f"message Type: {msg_type})")
-        homeplayer1_penalty_code = ord(interpret_byte(message[7]))
+        # homeplayer1_penalty_code = 
+        homeplayer1_penalty_code = determine_penalty_code(ord(interpret_byte(message[7])))
         # print(f"home Player 1 - Penalty Code: {hex(ord(homeplayer1_penalty_code))}") 
         homeplayer1_penalty_mins = interpret_byte(message[8])
         homeplayer1_penalty_secs_tens = interpret_byte(message[9])
@@ -128,7 +138,8 @@ def process_message_by_type(message):
         homeplayer1_penalty_secs = (homeplayer1_penalty_secs_tens * 10) + homeplayer1_penalty_secs_ones
         homeplayer1_penalty_time = f"{homeplayer1_penalty_mins:02}:{homeplayer1_penalty_secs:02}" 
 
-        homeplayer2_penalty_code = ord(interpret_byte(message[11]))
+        # homeplayer2_penalty_code = ord(interpret_byte(message[11]))
+        homeplayer2_penalty_code = determine_penalty_code(ord(interpret_byte(message[11])))
         # print(f"home Player 1 - Penalty Code: {hex(ord(homeplayer1_penalty_code))}") 
         homeplayer2_penalty_mins = interpret_byte(message[12])
         homeplayer2_penalty_secs_tens = interpret_byte(message[13])
@@ -143,6 +154,7 @@ def process_message_by_type(message):
     elif msg_type == (0x31, 0x33):  # Message type 13
         # print(f"message Type: {msg_type})")
         guestplayer1_penalty_code = ord(interpret_byte(message[7]))
+        guestplayer1_penalty_code = determine_penalty_code(ord(interpret_byte(message[7])))
         # print(f"Guest Player 1 - Penalty Code: {hex(ord(guestplayer1_penalty_code))}") 
         guestplayer1_penalty_mins = interpret_byte(message[8])
         guestplayer1_penalty_secs_tens = interpret_byte(message[9])
@@ -150,7 +162,8 @@ def process_message_by_type(message):
         guestplayer1_penalty_secs = (guestplayer1_penalty_secs_tens * 10) + guestplayer1_penalty_secs_ones
         guestplayer1_penalty_time = f"{guestplayer1_penalty_mins:02}:{guestplayer1_penalty_secs:02}" 
 
-        guestplayer2_penalty_code = ord(interpret_byte(message[11]))
+        # guestplayer2_penalty_code = ord(interpret_byte(message[11]))
+        guestplayer2_penalty_code = determine_penalty_code(ord(interpret_byte(message[11])))
         # print(f"Guest Player 1 - Penalty Code: {hex(ord(guestplayer2_penalty_code))}") 
         guestplayer2_penalty_mins = interpret_byte(message[12])
         guestplayer2_penalty_secs_tens = interpret_byte(message[13])
@@ -177,18 +190,36 @@ def write_status_to_json(filename="matchfacts.json"):
     global guestplayer2_penalty_time 
 
     status = {
-        "score_home": scorehome,
-        "score_guest": scoreguest,
-        "time": time,
-        "period": period,
-        "homeplayer1_penalty-on" : homeplayer1_penalty_code,
-        "homeplayer1_penalty_time" : homeplayer1_penalty_time,
-        "homeplayer2_penalty-on" : homeplayer2_penalty_code,
-        "homeplayer2_penalty_time" : homeplayer2_penalty_time,
-        "guestplayer1_penalty-on" : guestplayer1_penalty_code,
-        "guestplayer1_penalty_time" : guestplayer1_penalty_time,
-        "guestplayer2_penalty-on" : guestplayer2_penalty_code,
-        "guestplayer2_penalty_time" : guestplayer2_penalty_time
+        "score": {
+            "home": scorehome,
+            "guest": scoreguest
+        },
+        "MatchClock" : {
+            "time": time,
+            "period": period
+        },
+        "Penalties" : {
+            "HomeTeam" : {
+                "Player1" : {
+                    "HPP1-active" : homeplayer1_penalty_code,
+                    "HPP1-Time": homeplayer1_penalty_time
+                },
+                "Player2" : {
+                    "HPP2-active" : homeplayer2_penalty_code,
+                    "HPP2-Time": homeplayer2_penalty_time
+                }
+            },
+            "GuestTeam" : {
+                "Player1" : {
+                    "GPP1-active" : guestplayer1_penalty_code,
+                    "GPP1-Time": guestplayer1_penalty_time
+                },
+                "Player2" : {
+                    "GPP2-active" : guestplayer2_penalty_code,
+                    "GPP2-Time": guestplayer2_penalty_time
+                }
+            }
+        }
     }
     with open(filename, "w") as json_file:
         json.dump(status, json_file, indent=4)
@@ -204,9 +235,6 @@ def start_tcp_server(host, port):
         while True:
             client_socket, client_address = server_socket.accept()
             # print(f"Connection from {client_address}")
-            consolemessage11 = ""
-            consolemessage12 = ""
-            consolemessage13 = ""
             with client_socket:
                 data = client_socket.recv(1024)  # Receive up to 1024 bytes of data
                 while data:
@@ -215,39 +243,27 @@ def start_tcp_server(host, port):
 
                     for message in all_messages:
                         result = process_message_by_type(message)
+                        consolemessage11 = consolemessage12 = consolemessage13 = " "
                         if result:
                             if result[1] == '11':
-                                consolemessage11 = ""
-                                # print(f"Message 11: Mins: {result[2]}, Secs: {result[3]}, Score Home: {result[4]}, Score Guest: {result[5]}, Period: {result[6]}, Raw: {[f'0x{byte:02X}' for byte in result[0]]}")
-                                # homescore = result[4]
-                                # guestscore = result[5]
-                                # mins = result[2]
-                                # secs = result[3]
-                                # period = result[6]
-                                consolemessage11 = (f"Period: {period} | Time: {time} | Home Score:{scorehome} | Guest Score: {scoreguest}")
+                                consolemessage11 = (f"Period: {period} | Time: {time} | Home Score:{scorehome} | Guest Score: {scoreguest} ")
                             elif result[1] == '12':
-                                consolemessage12 = "" 
-                                if homeplayer1_penalty_code > 128:
-                                    # print(f"HomePlayer#1 Penalty: {homeplayer1_penalty_code} | Time: {homeplayer1_penalty_time}") 
-                                    consolemessage12 = f"HomeTeam Penalty 1 Code: {homeplayer1_penalty_code} | Time: {homeplayer1_penalty_time}"
-                                if homeplayer2_penalty_code > 128:
-                                    # print(f"HomePlayer#2 Penalty: {homeplayer2_penalty_code} | Time: {homeplayer2_penalty_time}") 
-                                    consolemessage12 = consolemessage12 + f"HomeTeam Penalty 2 Code: {homeplayer2_penalty_code} | Time: {homeplayer2_penalty_time}"   
+                                if homeplayer1_penalty_code:
+                                    consolemessage12 = f"HomeTeam Penalty 1 Code: {homeplayer1_penalty_code} | Time: {homeplayer1_penalty_time} "
+                                if homeplayer2_penalty_code:
+                                    consolemessage12 = consolemessage12 + f"HomeTeam Penalty 2 Code: {homeplayer2_penalty_code} | Time: {homeplayer2_penalty_time} "   
                             elif result[1] == '13':
-                                consolemessage13 = "" 
-                                if guestplayer1_penalty_code > 128:
-                                    consolemessage13 = f"GuestTeam Penalty 1 Code: {guestplayer1_penalty_code} | Time: {guestplayer1_penalty_time}"
-                                    # print(f"GuestPlayer#1 Penalty: {guestplayer1_penalty_code} | Time: {guestplayer1_penalty_time}") 
-                                if guestplayer2_penalty_code > 128:
-                                    consolemessage13 = consolemessage13 + f"GuestTeam Penalty 2 Code: {guestplayer2_penalty_code} | Time: {guestplayer2_penalty_time}"   
-                                    # print(f"GuestPlayer#2 Penalty: {guestplayer2_penalty_code} | Time: {guestplayer2_penalty_time}") 
-                                # print(f"Message {result[1]} {result[2]} {result[3]}")
-                            
+                                if guestplayer1_penalty_code:
+                                    consolemessage13 = f"GuestTeam Penalty 1 Code: {guestplayer1_penalty_code} | Time: {guestplayer1_penalty_time} "
+                                if guestplayer2_penalty_code:
+                                    consolemessage13 = consolemessage13 + f"GuestTeam Penalty 2 Code: {guestplayer2_penalty_code} | Time: {guestplayer2_penalty_time} "   
                             else: 
                                 print(f"*** *** *** Another (unprocessed) message!!! ")
                                 print(f"Message {result[1]}: {result[2]}, Raw: {[f'0x{byte:02X}' for byte in result[0]]}")
 
-                            print(f"{consolemessage11} {consolemessage12} {consolemessage13}")
+
+                            consolmessage = consolemessage11 + consolemessage12 + consolemessage13
+                            print(consolmessage)
                             write_status_to_json()
 
                     data = client_socket.recv(1024)  # Receive more data
