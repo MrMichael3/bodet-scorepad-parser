@@ -181,9 +181,6 @@ def message_processor():
                 time.sleep(0.05)
                 current_time = time.time()
 
-#            if delay < PROCESS_DELAY_TENTHS / 10.0:
-#                time.sleep((PROCESS_DELAY_TENTHS / 10.0) - delay)
-
             result = process_message_by_type(message)
             if result:
                 print(result)
