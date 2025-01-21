@@ -10,7 +10,7 @@ LRC_LENGTH = 1  # Length of LRC byte
 # File containing binary data
 FILE_PATH = 'all_messages_20250112_175610.bin'
 SERVER_ADDRESS = ('localhost', 4001)
-INTERVAL = 500     # Interval between sending messages (in milliseconds)
+INTERVAL = 1000     # Interval between sending messages (in milliseconds)
                     # 1000 means 1 second / 100 means 0.1 sec
 
 def extract_messages_from_file(file_path):
@@ -21,7 +21,7 @@ def extract_messages_from_file(file_path):
     
     start = 0
     # start 2. Drittel
-    start = 77000
+    start =  77000
     while start < len(data):
         soh_index = data.find(SOH, start)
         if soh_index == -1:
@@ -45,11 +45,11 @@ def extract_messages_from_file(file_path):
 
 def should_send_message(message):
 #    """Check if the fourth and fifth bytes match valid message types."""
-#    return len(message) > 5 and message[4] == 0x31 and message[5] == 0x31
-    return (len(message) > 5 and 
-            ((message[4] == 0x31 and message[5] == 0x31) or
-             (message[4] == 0x31 and message[5] == 0x32) or
-             (message[4] == 0x31 and message[5] == 0x33)))
+    return len(message) > 5 and message[4] == 0x31 and message[5] == 0x31
+ #   return (len(message) > 5 and 
+ #           ((message[4] == 0x31 and message[5] == 0x31) or
+ #            (message[4] == 0x31 and message[5] == 0x32) or
+ #            (message[4] == 0x31 and message[5] == 0x33)))
 
 def send_message_to_server(message, server_address):
     """Sends a single message to the server."""
@@ -69,9 +69,10 @@ def main():
 #        if should_send_message(message):
             print(f"Sending message {i+1}/{len(messages)}")
             send_message_to_server(message, SERVER_ADDRESS)
-            time.sleep(INTERVAL / 1000)  # Convert milliseconds to seconds
-#        else:
-#            print(f"Skipped message {i+1}/{len(messages)}: Does not meet criteria.")
+            if message[4] == 0x31 and message[5] == 0x31:
+                time.sleep(INTERVAL / 1000)  # Convert milliseconds to seconds
+ #       else:
+ #           print(f"Skipped message {i+1}/{len(messages)}: Does not meet criteria.")
 #            print(f"Message: {message.hex()}")
 
 if __name__ == '__main__':

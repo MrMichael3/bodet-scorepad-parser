@@ -9,10 +9,14 @@ host = '0.0.0.0'
 port = 4001
 MESSAGE_LOG_FILE = f"all_messages_{time.strftime('%Y%m%d_%H%M%S')}.bin"
 ENABLE_SAVE_MESSAGES = True
-PROCESS_DELAY_TENTHS = 5  # Delay in tenths of a second (e.g., 5 = 0.5 seconds)
+PROCESS_DELAY_TENTHS = 35  # Delay in tenths of a second (e.g., 50 = 5 seconds)
 
 # Queue for sharing messages between threads
-message_queue = queue.Queue()
+message_queue = queue.PriorityQueue()
+
+# make sure no division by zero or negativ PROCESS_DELAY_TENTHS is configured
+if PROCESS_DELAY_TENTHS < 1:
+    PROCESS_DELAY_TENTHS = 1
 
 # Global game status
 status = {
@@ -111,7 +115,8 @@ def process_message_by_type(message):
         status["score"]["guest"] = scoreguest
         status["MatchClock"]["time"] = f"{mins:02}:{secs:02}"
         status["MatchClock"]["period"] = period
-        return "Updated Match Status"
+        return_message = "Updated Match Status | " + str(status["MatchClock"]["period"]) + " | " + status["MatchClock"]["time"]
+        return return_message
 
     elif msg_type == (0x31, 0x32):  # Message type 12
         homeplayer1_penalty_code = determine_penalty_code(ord(interpret_byte(message[7])))
@@ -155,7 +160,8 @@ def message_receiver(server_socket):
                 while data:
                     messages = process_data(data)
                     for message in messages:
-                        message_queue.put(message)
+                        delivery_time = time.time() + (PROCESS_DELAY_TENTHS / 10)
+                        message_queue.put((delivery_time, message))  # PriorityQueue stores by time
                     data = client_socket.recv(1024)
     except KeyboardInterrupt:
         print("Server shutting down...")
@@ -166,13 +172,22 @@ def message_receiver(server_socket):
 def message_processor():
     while True:
         try:
-            message = message_queue.get(timeout=1)
-            if message:
-                time.sleep(PROCESS_DELAY_TENTHS / 10.0)
-                result = process_message_by_type(message)
-                if result:
-                    print(result)
-                    write_status_to_json()
+            current_time = time.time()
+            delivery_time, message = message_queue.get(timeout=1)
+
+            while current_time < delivery_time:
+                print(f"Current Time: {current_time}")
+                print(f"Deliver Time: {delivery_time}")
+                time.sleep(0.05)
+                current_time = time.time()
+
+#            if delay < PROCESS_DELAY_TENTHS / 10.0:
+#                time.sleep((PROCESS_DELAY_TENTHS / 10.0) - delay)
+
+            result = process_message_by_type(message)
+            if result:
+                print(result)
+                write_status_to_json()
         except queue.Empty:
             continue
 
@@ -194,3 +209,4 @@ def start_tcp_server():
 
 if __name__ == "__main__":
     start_tcp_server()
+''
