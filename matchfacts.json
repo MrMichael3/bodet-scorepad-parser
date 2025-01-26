@@ -4,7 +4,7 @@
         "guest": 0
     },
     "MatchClock": {
-        "time": "00:59",
+        "time": "00:00",
         "period": 2
     },
     "Penalties": {
@@ -20,8 +20,8 @@
         },
         "GuestTeam": {
             "Player1": {
-                "GPP1-active": 1,
-                "GPP1-Time": "01:49"
+                "GPP1-active": 0,
+                "GPP1-Time": "00:00"
             },
             "Player2": {
                 "GPP2-active": 0,

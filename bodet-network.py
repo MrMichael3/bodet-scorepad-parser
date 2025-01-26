@@ -162,6 +162,9 @@ def process_message_by_type(message):
 # Thread 1: Message Receiver
 def message_receiver(server_socket):
     print(f"Listening for TCP connections on {host}:{port}...")
+    print(f"Saving all Messages to Log? {ENABLE_SAVE_MESSAGES}")
+    if ENABLE_SAVE_MESSAGES:
+        print(f"LogFileName: {MESSAGE_LOG_FILE}")
     try:
         while True:
             client_socket, client_address = server_socket.accept()
@@ -172,6 +175,7 @@ def message_receiver(server_socket):
                     messages = process_data(data)
                     for message in messages:
                         delivery_time = time.time() + (PROCESS_DELAY_TENTHS / 10)
+                        save_message_to_file(message) # Save message to logfile
                         message_queue.put((delivery_time, message))  # PriorityQueue stores by time
                     data = client_socket.recv(1024)
     except KeyboardInterrupt:
