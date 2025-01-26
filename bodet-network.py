@@ -3,13 +3,24 @@ import queue
 import socket
 import time
 import json
+import configparser
+
+# Load configuration from file
+config = configparser.ConfigParser()
+config.read("config.ini")
 
 # Global Configuration
-host = '0.0.0.0'
-port = 4001
-MESSAGE_LOG_FILE = f"all_messages_{time.strftime('%Y%m%d_%H%M%S')}.bin"
-ENABLE_SAVE_MESSAGES = True
-PROCESS_DELAY_TENTHS = 35  # Delay in tenths of a second (e.g., 50 = 5 seconds)
+# host = '0.0.0.0'
+# port = 4001
+# MESSAGE_LOG_FILE = f"all_messages_{time.strftime('%Y%m%d_%H%M%S')}.bin"
+# ENABLE_SAVE_MESSAGES = True
+# PROCESS_DELAY_TENTHS = 35  # Delay in tenths of a second (e.g., 50 = 5 seconds)
+host = config.get("Server", "host", fallback="0.0.0.0")
+port = config.getint("Server", "port", fallback=4001)
+MESSAGE_LOG_FILE = config.get("Logging", "MESSAGE_LOG_FILE", fallback=f"all_messages_{time.strftime('%Y%m%d_%H%M%S')}.bin")
+ENABLE_SAVE_MESSAGES = config.getboolean("Logging", "ENABLE_SAVE_MESSAGES", fallback=True)
+PROCESS_DELAY_TENTHS = config.getint("Processing", "PROCESS_DELAY_TENTHS", fallback=50)  # Delay in tenths of a second
+
 
 # Queue for sharing messages between threads
 message_queue = queue.PriorityQueue()
