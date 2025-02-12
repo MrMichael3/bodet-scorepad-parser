@@ -17,7 +17,9 @@ config.read("config.ini")
 # PROCESS_DELAY_TENTHS = 35  # Delay in tenths of a second (e.g., 50 = 5 seconds)
 host = config.get("Server", "host", fallback="0.0.0.0")
 port = config.getint("Server", "port", fallback=4001)
-MESSAGE_LOG_FILE = config.get("Logging", "MESSAGE_LOG_FILE", fallback=f"all_messages_{time.strftime('%Y%m%d_%H%M%S')}.bin")
+log_filename_base = config.get("Logging", "MESSAGE_LOG_FILE", fallback="all_messages")
+timestamp = time.strftime('%Y%m%d_%H%M%S')
+MESSAGE_LOG_FILE = f"{log_filename_base}_{timestamp}.log"
 ENABLE_SAVE_MESSAGES = config.getboolean("Logging", "ENABLE_SAVE_MESSAGES", fallback=True)
 PROCESS_DELAY_TENTHS = config.getint("Processing", "PROCESS_DELAY_TENTHS", fallback=50)  # Delay in tenths of a second
 
