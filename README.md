@@ -135,7 +135,9 @@ The format looks as follows:
 
 the author of this script is using OBS to embed the extracted data from the JSON file into a live stream. 
 The necessary files (config and graphics) are located in the directories named `obs-scene-collection` and `graphics`. 
-
+The following OBS plugins are required to guarantee proper function: 
+- [URL/API Source](https://github.com/locaal-ai/obs-urlsource)
+- [Advanced Scene Switcher](https://github.com/WarmUpTill/SceneSwitcher)
 
 ## what's next
 - currently the script meets my needs. a new GUI would be nice though.
