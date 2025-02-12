@@ -83,10 +83,12 @@ A typical message might look like this in hex:
 ```
 
 explanation to some of the transmitted frames: 
-- Start of Heading (SOH)  = 01 hexadecimal
-- Start of text (STX) = 02 hexadecimal
-- End of text (ETX) = 03 hexadecimal
-- after ETX an additional byte gets transmited. The
+- 0x01 = Start of Heading (SOH)  = 01 hexadecimal
+- 0x7f = Address (not further specified by Bodet) 
+- 0x02 = Start of text (STX) = 02 hexadecimal
+- several bytes containing the Message
+- 0x03 = End of text (ETX) = 03 hexadecimal
+- 0x2d = after ETX an additional byte gets transmited. The
   - Longitudinal Redundancy Check (LRC)
 
 All details about the structure of the messages can be found in the [linked manual from Bodet](https://static.bodet-sport.com/images/stories/EN/support/Pdfs/manuals/Scorepad/608264-Network%20output%20and%20protocols-Scorepad.pdf). 
