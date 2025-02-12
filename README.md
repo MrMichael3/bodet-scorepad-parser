@@ -1,97 +1,80 @@
-# TCP Message Processor for Bodet Scorepad
+# Bodet Scorpade Message Parser (over TCP) 
 
-This repository contains a Python script and additional files to process and analyze data transmitted over TCP from the [Bodet Scorepad](https://www.bodet-sport.com/products/sports-display-control/control-keyboard.html). 
-The script is designed to parse specific messages and extract details such as scores, time, and game period. It also writes the current status into a JSON file for easy integration with other systems.
+This repository contains a Python script and additional files to receive and process messages from a [Bodet Scoreboard](https://www.bodet-sport.com/products/sports-display-control/control-keyboard.html) over a TCP connection. It extracts game-related information such as **match time, score, and penalties**, and logs received messages for future reference. Processed data is stored in a JSON file (`matchfacts.json`) for easy integration with other applications.
+
+The script runs as a TCP server, listening for incoming messages, processing them based on predefined formats, and storing relevant match data. It also ensures message validation using LRC (Longitudinal Redundancy Check).
 
 ## Features
 
-Currently the script *only listens for data related to floorball*. It can serve as a template for other sports.   
+- **TCP Server**: Listens for incoming scoreboard data.
+- **Real-time Processing**: Updates game status (score, match clock, penalties).
+- **Message Validation**: Uses LRC to check data integrity.
+- **Logging**: Optionally saves raw messages to a binary log file.
+- **Configurable Delays**: Allows fine-tuning of message processing timing.
+- **Multi-threading**: Efficiently handles incoming messages and processing tasks in separate threads.
 
-- Captures real-time data from a TCP socket.
-- Filters and processes only messages with a few specific type identifiers (number `11, 12 and 13`).
-- Message `11` contains the following data: 
-  - Home team score.
-  - Guest team score.
-  - Current game time (minutes and seconds).
-  - Current game period (including overtime indicated as "E").
-- Message `12 and 13` contain data regarding penalties (which are not parsed yet). 
-- Outputs the parsed information to the console and a JSON file.
+## Configuration
+
+The script reads configuration settings from a `config.ini` file. The following parameters can be customized:
+
+### **Server Settings**
+| Parameter | Default Value | Description |
+|-----------|--------------|-------------|
+| `host` | `0.0.0.0` | IP address to bind the TCP server |
+| `port` | `4001` | Port number for incoming connections |
+
+### **Logging Settings**
+| Parameter | Default Value | Description |
+|-----------|--------------|-------------|
+| `MESSAGE_LOG_FILE` | `all_messages_<timestamp>.bin` | Filename for saving raw messages |
+| `ENABLE_SAVE_MESSAGES` | `True` | Enables/disables message logging |
+
+### **Processing Settings**
+| Parameter | Default Value | Description |
+|-----------|--------------|-------------|
+| `PROCESS_DELAY_TENTHS` | `50` (5 seconds) | Delay before processing a message (in tenths of a second) |
+
+## How It Works
+
+1. **TCP Server**: The script starts a server on the configured `host` and `port`, waiting for scoreboard data.
+2. **Message Reception**: Incoming messages are received, processed, and stored in a queue.
+3. **Data Processing**: Messages are validated, interpreted, and converted into game status updates.
+4. **Logging**: If enabled, raw messages are saved to a binary log file.
+5. **JSON Output**: Processed match data is saved to `matchfacts.json`.
 
 ## Prerequisites
 
 - Python 3.6 or higher
 
-## Installation
 
-1. Clone the repository:
-```bash
-   git clone https://github.com/christoph-ernst/bodet-scorepad-parser.git
-   cd bodet-scorepad-parser
-```
-2. Install any necessary dependencies (if applicable). This script does not require external libraries apart from the standard Python library.
-   
-## Usage
-### Running the Script
-1. Start the script:
-```bash
+## Running the Script
+
+Ensure you have Python 3 installed (and the required dependencies). Then, simply run:
+
+```sh
 python bodet-network.py
 ```
-3. The script will listen for incoming TCP connections on the specified port (default is `4001`).
-4. make sure to configure your Bodet Scorepad accordingly. The [Guide from Bodet](https://static.bodet-sport.com/images/stories/EN/support/Pdfs/manuals/Scorepad/608264-Network%20output%20and%20protocols-Scorepad.pdf) explains how to achive that.
+
+
+
+## Addtitonal information for those interested
+
+### Bodet Scorepad setup
+
+make sure to configure your Bode Scorapad accordingly. 
+The [Guide from Bodet](https://static.bodet-sport.com/images/stories/EN/support/Pdfs/manuals/Scorepad/608264-Network%20output%20and%20protocols-Scorepad.pdf) explains how to achive that.
+
+Below is an example network setup for this project.
+
+![Network Diagram](https://github.com/christoph-ernst/bodet-scorepad-parser/blob/main/graphics/network-example.png)
 
 ### Testing
 If you happen not to have a Scorepad with you all the time you can make use of the `send-test-messages.py` script. 
 It will send some data to localhost:4001. By default the test data is read from the file `test-messages.bin`. 
 In the script `bodet-network.py`  you also can enable the switch `ENABLE_SAVE_MESSAGES` which will save all messages the script receives from a Bodet Scorepad into a file for later replay.  
 
-## Output
-- Console Output: Each parsed message will be displayed in the console, showing the home score, guest score, time, and period.
-Console:
-```yaml
-Time: 03:14 | Home Score:4 | Guest Score: 2
-```` 
-- JSON File: The current status is saved to `status.json` in the following format:
-```json
-{
-    "score_home": 5,
-    "score_guest": 4,
-    "time": "12:34",
-    "period": 3
-}
-```
 
-## Configuration
-- Host and Port:
-Modify the `host` and `port` variables in the script to change where the server listens for incoming connections:
-```python
-host = '0.0.0.0'  # Listen on all interfaces
-port = 4001       # Default port
-```
-- JSON File Location:
-The JSON file location can be customized by changing the filename parameter in the `write_status_to_json` function.
-
-### Network Setup Example: 
-Below is an example network setup for this project.
-
-![Network Diagram](https://github.com/christoph-ernst/bodet-scorepad-parser/blob/main/graphics/network-example.png)
-
-# How It Works
-1. The script listens for TCP connections and receives data in chunks.
-2. Messages are parsed according to predefined markers and structure.
-3. the LRC check is calculated over each received message to ensure its integrity. 
-4. Only messages with type `11, 12 and 13` are processed further.
-   
-   - message #11, #12 and #13 are related to floorball. For other message types see the [Guide from Bodet](https://static.bodet-sport.com/images/stories/EN/support/Pdfs/manuals/Scorepad/608264-Network%20output%20and%20protocols-Scorepad.pdf)
-  
-5. Extracted information includes:
-   
-   - Scores (home and guest teams).
-   - Time (in minutes and seconds).
-   - Period (handles regular periods as integers and "E" for overtime).
-    
-6. The results are printed to the console and saved to a JSON file.
-
-## Example Input
+### Example Input
 
 A typical message might look like this in hex:
 ```
@@ -108,11 +91,53 @@ explanation to some of the transmitted frames:
 
 All details about the structure of the messages can be found in the [linked manual from Bodet](https://static.bodet-sport.com/images/stories/EN/support/Pdfs/manuals/Scorepad/608264-Network%20output%20and%20protocols-Scorepad.pdf). 
 
-## what's next
-- implement additional message types
-   -  Message #12: Home team players penalty
-   -  Message #13: Guest team players penalty
 
+### JSON File: The current status is saved to `status.json` in the working directory of the script . 
+The format looks as follows: 
+```json
+{
+    "score": {
+        "home": 0,
+        "guest": 7
+    },
+    "MatchClock": {
+        "time": "20:00",
+        "period": 3
+    },
+    "Penalties": {
+        "HomeTeam": {
+            "Player1": {
+                "HPP1-active": 0,
+                "HPP1-Time": "00:00"
+            },
+            "Player2": {
+                "HPP2-active": 0,
+                "HPP2-Time": "00:00"
+            }
+        },
+        "GuestTeam": {
+            "Player1": {
+                "GPP1-active": 0,
+                "GPP1-Time": "00:00"
+            },
+            "Player2": {
+                "GPP2-active": 0,
+                "GPP2-Time": "00:00"
+            }
+        }
+    }
+}
+
+```
+### integration with OBS
+
+I use OBS to embed the extracted data from the JSON file into a live stream. 
+The necessary files (config and graphics) are located in the directories named `obs-scene-collection` and `graphics`. 
+
+
+## what's next
+- currently the script meets my needs. a new GUI would be nice though.
+  
 ## License
 This project is licensed under the GNU GENERAL PUBLIC LICENSE Version 3. See the LICENSE file for details.
 
