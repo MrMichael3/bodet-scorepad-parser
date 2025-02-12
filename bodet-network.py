@@ -19,7 +19,7 @@ host = config.get("Server", "host", fallback="0.0.0.0")
 port = config.getint("Server", "port", fallback=4001)
 log_filename_base = config.get("Logging", "MESSAGE_LOG_FILE", fallback="all_messages")
 timestamp = time.strftime('%Y%m%d_%H%M%S')
-MESSAGE_LOG_FILE = f"{log_filename_base}_{timestamp}.log"
+MESSAGE_LOG_FILE = f"{log_filename_base}_{timestamp}.bin"
 ENABLE_SAVE_MESSAGES = config.getboolean("Logging", "ENABLE_SAVE_MESSAGES", fallback=True)
 PROCESS_DELAY_TENTHS = config.getint("Processing", "PROCESS_DELAY_TENTHS", fallback=50)  # Delay in tenths of a second
 
@@ -193,8 +193,8 @@ def message_processor():
             delivery_time, message = message_queue.get(timeout=1)
 
             while current_time < delivery_time:
-                print(f"Current Time: {current_time}")
-                print(f"Deliver Time: {delivery_time}")
+               # print(f"Current Time: {current_time}")
+               # print(f"Deliver Time: {delivery_time}")
                 time.sleep(0.05)
                 current_time = time.time()
 
