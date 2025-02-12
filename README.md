@@ -94,7 +94,8 @@ explanation to some of the transmitted frames:
 All details about the structure of the messages can be found in the [linked manual from Bodet](https://static.bodet-sport.com/images/stories/EN/support/Pdfs/manuals/Scorepad/608264-Network%20output%20and%20protocols-Scorepad.pdf). 
 
 
-### JSON File: The current status is saved to `status.json` in the working directory of the script . 
+### JSON File
+The current status is saved to `status.json` in the working directory of the script . 
 The format looks as follows: 
 ```json
 {
