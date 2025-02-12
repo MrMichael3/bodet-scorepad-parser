@@ -1,11 +1,11 @@
 {
     "score": {
-        "home": 2,
-        "guest": 0
+        "home": 0,
+        "guest": 7
     },
     "MatchClock": {
-        "time": "00:00",
-        "period": 2
+        "time": "20:00",
+        "period": 3
     },
     "Penalties": {
         "HomeTeam": {
