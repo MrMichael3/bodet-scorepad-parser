@@ -83,11 +83,11 @@ A typical message might look like this in hex:
 ```
 
 explanation to some of the transmitted frames: 
-- 0x01 = Start of Heading (SOH)  = 01 hexadecimal
+- 0x01 = Start of Heading (SOH) 
 - 0x7f = Address (not further specified by Bodet) 
-- 0x02 = Start of text (STX) = 02 hexadecimal
+- 0x02 = Start of text (STX)
 - several bytes containing the Message
-- 0x03 = End of text (ETX) = 03 hexadecimal
+- 0x03 = End of text (ETX) 
 - 0x2d = after ETX an additional byte gets transmited. The
   - Longitudinal Redundancy Check (LRC)
 
@@ -133,7 +133,7 @@ The format looks as follows:
 ```
 ### integration with OBS
 
-I use OBS to embed the extracted data from the JSON file into a live stream. 
+the author of this script is using OBS to embed the extracted data from the JSON file into a live stream. 
 The necessary files (config and graphics) are located in the directories named `obs-scene-collection` and `graphics`. 
 
 
