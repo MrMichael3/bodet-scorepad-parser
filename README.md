@@ -1,4 +1,4 @@
-# Bodet Scorpade Message Parser (over TCP) 
+# Bodet Scorepad Message Parser (over TCP) 
 
 This repository contains a Python script and additional files to receive and process messages from a [Bodet Scoreboard](https://www.bodet-sport.com/products/sports-display-control/control-keyboard.html) over a TCP connection. It extracts game-related information such as **match time, score, and penalties**, and logs received messages for future reference. Processed data is stored in a JSON file (`matchfacts.json`) for easy integration with other applications.
 
