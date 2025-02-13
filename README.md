@@ -4,6 +4,8 @@ This repository contains a Python script and additional files to receive and pro
 
 The script runs as a TCP server, listening for incoming messages, processing them based on predefined formats, and storing relevant match data. It also ensures message validation using LRC (Longitudinal Redundancy Check).
 
+This script currently **only processes messages relating to floorball**. However, the script can serve as a template for other sports. An extension is possible at any time without great effort.
+
 ## Features
 
 - **TCP Server**: Listens for incoming scoreboard data.
