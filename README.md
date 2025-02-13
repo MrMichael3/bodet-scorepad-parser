@@ -102,12 +102,12 @@ The format looks as follows:
 ```json
 {
     "score": {
-        "home": 0,
-        "guest": 7
+        "home": 4,
+        "guest": 1
     },
     "MatchClock": {
-        "time": "20:00",
-        "period": 3
+        "time": "17:35",
+        "period": 2
     },
     "Penalties": {
         "HomeTeam": {
@@ -122,8 +122,8 @@ The format looks as follows:
         },
         "GuestTeam": {
             "Player1": {
-                "GPP1-active": 0,
-                "GPP1-Time": "00:00"
+                "GPP1-active": 1,
+                "GPP1-Time": "01:29"
             },
             "Player2": {
                 "GPP2-active": 0,
