@@ -63,7 +63,7 @@ python bodet-network.py
 
 ### Bodet Scorepad setup
 
-make sure to configure your Bode Scorapad accordingly. 
+make sure to configure your Bodet Scorapad accordingly. 
 The [Guide from Bodet](https://static.bodet-sport.com/images/stories/EN/support/Pdfs/manuals/Scorepad/608264-Network%20output%20and%20protocols-Scorepad.pdf) explains how to achive that.
 
 Below is an example network setup for this project.
