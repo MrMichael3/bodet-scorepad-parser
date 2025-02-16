@@ -139,10 +139,23 @@ def process_message_by_type(message):
         homeplayer1_penalty_secs = (homeplayer1_penalty_secs_tens * 10) + homeplayer1_penalty_secs_ones
         homeplayer1_penalty_time = f"{homeplayer1_penalty_mins:02}:{homeplayer1_penalty_secs:02}"
 
+        homeplayer2_penalty_code = determine_penalty_code(ord(interpret_byte(message[11])))
+        homeplayer2_penalty_mins = interpret_byte(message[12])
+        homeplayer2_penalty_secs_tens = interpret_byte(message[13])
+        homeplayer2_penalty_secs_ones = interpret_byte(message[14])
+        homeplayer2_penalty_secs = (homeplayer2_penalty_secs_tens * 10) + homeplayer2_penalty_secs_ones
+        homeplayer2_penalty_time = f"{homeplayer2_penalty_mins:02}:{homeplayer2_penalty_secs:02}"
+
         status["Penalties"]["HomeTeam"]["Player1"] = {
             "HPP1-active": homeplayer1_penalty_code,
             "HPP1-Time": homeplayer1_penalty_time
         }
+		
+        status["Penalties"]["HomeTeam"]["Player2"] = {
+            "HPP2-active": homeplayer2_penalty_code,
+            "HPP2-Time": homeplayer2_penalty_time
+        }
+
         return "Updated Home Penalties"
 
     elif msg_type == (0x31, 0x33):  # Message type 13
@@ -153,10 +166,24 @@ def process_message_by_type(message):
         guestplayer1_penalty_secs = (guestplayer1_penalty_secs_tens * 10) + guestplayer1_penalty_secs_ones
         guestplayer1_penalty_time = f"{guestplayer1_penalty_mins:02}:{guestplayer1_penalty_secs:02}"
 
+        guestplayer2_penalty_code = determine_penalty_code(ord(interpret_byte(message[11])))
+        guestplayer2_penalty_mins = interpret_byte(message[12])
+        guestplayer2_penalty_secs_tens = interpret_byte(message[13])
+        guestplayer2_penalty_secs_ones = interpret_byte(message[14])
+        guestplayer2_penalty_secs = (guestplayer2_penalty_secs_tens * 10) + guestplayer2_penalty_secs_ones
+        guestplayer2_penalty_time = f"{guestplayer2_penalty_mins:02}:{guestplayer2_penalty_secs:02}"
+
+
         status["Penalties"]["GuestTeam"]["Player1"] = {
             "GPP1-active": guestplayer1_penalty_code,
             "GPP1-Time": guestplayer1_penalty_time
         }
+        
+        status["Penalties"]["GuestTeam"]["Player2"] = {
+            "GPP2-active": guestplayer2_penalty_code,
+            "GPP2-Time": guestplayer2_penalty_time
+        }
+
         return "Updated Guest Penalties"
 
     return None

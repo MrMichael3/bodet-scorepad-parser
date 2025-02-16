@@ -1,11 +1,11 @@
 {
     "score": {
         "home": 1,
-        "guest": 6
+        "guest": 0
     },
     "MatchClock": {
-        "time": "20:00",
-        "period": 3
+        "time": "03:07",
+        "period": 1
     },
     "Penalties": {
         "HomeTeam": {
@@ -20,8 +20,8 @@
         },
         "GuestTeam": {
             "Player1": {
-                "GPP1-active": 1,
-                "GPP1-Time": "00:45"
+                "GPP1-active": 0,
+                "GPP1-Time": "00:00"
             },
             "Player2": {
                 "GPP2-active": 0,

@@ -8,7 +8,7 @@ ETX = b'\x03'  # End of Text
 LRC_LENGTH = 1  # Length of LRC byte
 
 # File containing binary data
-FILE_PATH = 'all_messages_20250112_175610.bin'
+FILE_PATH = 'all_messages_with4runningPenalties.bin'
 SERVER_ADDRESS = ('localhost', 4001)
 INTERVAL = 1000     # Interval between sending messages (in milliseconds)
                     # 1000 means 1 second / 100 means 0.1 sec
@@ -21,7 +21,7 @@ def extract_messages_from_file(file_path):
     
     start = 0
     # start 2. Drittel
-    start =  77000
+    # start =  77000
     while start < len(data):
         soh_index = data.find(SOH, start)
         if soh_index == -1:
