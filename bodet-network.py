@@ -176,9 +176,9 @@ def message_receiver(server_socket):
                 while data:
                     messages = process_data(data)
                     for message in messages:
-                        delivery_time = time.time() + (PROCESS_DELAY_TENTHS / 10)
+                        storage_time = time.time() # + (PROCESS_DELAY_TENTHS / 10)
                         save_message_to_file(message) # Save message to logfile
-                        message_queue.put((delivery_time, message))  # PriorityQueue stores by time
+                        message_queue.put((storage_time, message))  # PriorityQueue stores by time
                     data = client_socket.recv(1024)
     except KeyboardInterrupt:
         print("Server shutting down...")
@@ -191,10 +191,11 @@ def message_processor():
         try:
             current_time = time.time()
             delivery_time, message = message_queue.get(timeout=1)
+            delivery_time = delivery_time + (PROCESS_DELAY_TENTHS / 10)
 
             while current_time < delivery_time:
-               # print(f"Current Time: {current_time}")
-               # print(f"Deliver Time: {delivery_time}")
+                # print(f"Current Time: {current_time}")
+                # print(f"Deliver Time: {delivery_time}")
                 time.sleep(0.05)
                 current_time = time.time()
 
