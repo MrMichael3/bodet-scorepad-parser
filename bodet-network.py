@@ -88,7 +88,7 @@ def determine_penalty_code(value):
 
 def write_status_to_json(filename="matchfacts.json"):
     with open(filename, "w") as json_file:
-        json.dump(status, json_file, indent=4)
+        json.dump([status], json_file, indent=4)
 
 def process_message_by_type(message):
     global status
